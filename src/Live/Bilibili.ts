@@ -1,7 +1,8 @@
 import { KeepLiveWS } from "bilibili-live-ws/src/browser";
 import Danmu from "./Danmu";
+import Entry from "./Entry";
 import Gift from "./Gift";
-import { IParseDanmuData, IParseGiftData } from "./type";
+import { IParseDanmuData, IParseEntryData, IParseGiftData } from "./type";
 
 export interface ICmd {
   cmd: string;
@@ -11,6 +12,7 @@ export interface ICmd {
 
 export interface IDanmuData extends ICmd {}
 export interface IGiftData extends ICmd {}
+export interface IEntryData extends ICmd {}
 
 export function parseDanmu(data: IDanmuData) {
   const { info } = data;
@@ -49,6 +51,20 @@ export function parseGift(data: IGiftData) {
   return result;
 }
 
+export function parseEntry(_data: IEntryData) {
+  const { data } = _data;
+  const face = data.face;
+  const uid = data.uid;
+  const copy_writing = data.copy_writing;
+  const name = copy_writing.replace(/^.*?<%(.+)%>.*?$/, "$1");
+  const result: IParseEntryData = {
+    face,
+    id: uid,
+    name,
+  };
+  return result;
+}
+
 export default class BilibiliLive {
   live: KeepLiveWS;
   constructor(public roomId: number) {
@@ -63,6 +79,10 @@ export default class BilibiliLive {
     this.live.on("SEND_GIFT", (data) => {
       const gift = parseGift(data);
       Gift.Apply(gift);
+    });
+    this.live.on("ENTRY_EFFECT", (data) => {
+      const entry = parseEntry(data);
+      Entry.Apply(entry);
     });
   }
 }

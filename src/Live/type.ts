@@ -13,3 +13,9 @@ export interface IParseDanmuData {
   name: string;
   faceId?: string;
 }
+
+export interface IParseEntryData {
+  id: number;
+  name: string;
+  face: string;
+}

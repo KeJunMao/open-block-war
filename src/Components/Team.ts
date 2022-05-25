@@ -73,6 +73,14 @@ export default class Team {
     return users.find((user) => user.id === id);
   }
 
+  static GetMinPlayerTeam() {
+    const teams = Game.Core.teams;
+    const minTeam = [...teams].sort(
+      (a, b) => a.players.children.size - b.players.children.size
+    )[0];
+    return minTeam;
+  }
+
   hasJoinKeyword(text: string) {
     return this.joinCommand.some((c) => text.includes(c));
   }
