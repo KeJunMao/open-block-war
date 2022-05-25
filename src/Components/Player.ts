@@ -29,6 +29,7 @@ export default class Player extends Phaser.GameObjects.Container {
     this.scene.physics.add.existing(this);
     this.Body.setCollideWorldBounds(true);
     this.Body.setBounce(1, 1);
+    this.setDepth(5000);
     if (parent) {
       this.createOrUpdateLine();
     }
@@ -54,7 +55,6 @@ export default class Player extends Phaser.GameObjects.Container {
       loop: 0,
     });
     this.flash.stop();
-    this.setDepth(2000);
   }
 
   speedUp(count = 1) {
@@ -103,7 +103,8 @@ export default class Player extends Phaser.GameObjects.Container {
       this.line = this.scene.add
         .line(0, 0, 0, 0, 100, 100, 0xffffff)
         .setOrigin(0)
-        .setAlpha(0.5);
+        .setAlpha(0.5)
+        .setDepth(this.depth + 1);
     }
   }
 
