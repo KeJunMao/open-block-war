@@ -38,6 +38,8 @@ const Team: FC<TeamProps> = ({
         fontSize: "2rem",
         backgroundColor: color,
         backgroundImage: `url(${tile})`,
+        backgroundSize: "contain",
+        color: tile ? color : "inherit",
       }}
     >
       <Box
@@ -65,6 +67,7 @@ const Team: FC<TeamProps> = ({
           sx={{
             fontSize: "2em",
             mr: 2,
+            lineHeight: "1.2em",
           }}
         >
           {shortName ? shortName : name}

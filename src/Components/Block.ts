@@ -40,8 +40,8 @@ export default class Block extends Phaser.GameObjects.Rectangle {
       this.scene.load.once("complete", () => {
         this.hall = this.scene.add
           .image(0, 0, hall)
+          .setSize(Game.BlockSize * 2, Game.BlockSize * 2)
           .setDisplaySize(Game.BlockSize * 2, Game.BlockSize * 2)
-          .setOrigin(0)
           .setDepth(this.depth + 2);
         Phaser.Display.Align.In.Center(this.hall, this);
         this._setIsHome();

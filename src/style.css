@@ -34,3 +34,24 @@ body {
       right;
   background-size: 104px auto, 112px auto, 196px auto, 155px auto;
 }
+
+.minecraft {
+  font-family: minecraftFont;
+}
+
+.minecraft .game-wapper {
+  padding: 10px;
+  border: 5px solid #000;
+  box-shadow: 5px 5px 5px rgb(255, 255, 255) inset,
+    -5px -5px 5px rgb(0, 0, 0) inset;
+  border-radius: 10px;
+}
+
+.minecraft .MuiTypography-root {
+  font-family: minecraftFont;
+}
+
+@font-face {
+  font-family: minecraftFont;
+  src: url(/theme/minecraft/font.ttf);
+}
