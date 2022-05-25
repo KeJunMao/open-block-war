@@ -51,6 +51,7 @@ export default class User {
   // 投靠
   obedience(team: Team) {
     if (this.team === team) return;
+    if (team.isDie) return;
     this.setTeam(team);
     this.sourceTeam = team;
     this.score = 0;
