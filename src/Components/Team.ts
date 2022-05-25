@@ -24,7 +24,6 @@ export default class Team {
     this.players = new Phaser.GameObjects.Group(scene);
     this.blocks = new Phaser.GameObjects.Group(scene);
     this.homeBlock = Game.Core.map?.getBlock(homeX, homeY);
-    this.initHomeBlock();
     this.joinCommand = [...joinCommand, this.name];
     if (this.shortName) {
       this.joinCommand.push(this.shortName);
@@ -33,12 +32,13 @@ export default class Team {
   }
 
   loadTile() {
-    if (!this.tile) return;
+    if (!this.tile) {
+      this.initHomeBlock();
+      return;
+    }
     this.scene.load.image(this.tile, this.tile);
     this.scene.load.once("complete", () => {
-      this.blocks.children.each((block) => {
-        if (this.tile) (block as Block).setTile(this.tile);
-      });
+      this.initHomeBlock();
     });
     this.scene.load.start();
   }
