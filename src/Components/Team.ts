@@ -94,6 +94,6 @@ export default class Team {
   }
 
   get isDie() {
-    return this.homeBlock?.team !== this;
+    return this.homeBlock?.isHome === false;
   }
 }
