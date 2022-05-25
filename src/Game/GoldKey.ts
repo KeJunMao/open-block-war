@@ -37,7 +37,7 @@ export default class GoldKey {
     });
     Danmu.Apply({
       text: "紫",
-      id: 233333,
+      id: 2333333,
       name: "紫色",
     });
   }

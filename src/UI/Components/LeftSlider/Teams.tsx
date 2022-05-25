@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import { FC } from "react";
 import { useSelector } from "react-redux";
+import { colorToString } from "../../../paid/theme";
 import { RootState } from "../../../store";
 import formatNumber from "../../../utils/formatNumber";
 
@@ -33,7 +34,7 @@ const Team: FC<TeamProps> = ({
         display: "flex",
         alignItems: "center",
         fontSize: "2rem",
-        backgroundColor: `#${color}`,
+        backgroundColor: color,
       }}
     >
       <Box
@@ -48,9 +49,12 @@ const Team: FC<TeamProps> = ({
       {icon ? (
         <Box
           sx={{
-            width: "2em",
-            height: "2em",
-            backgroundColor: "#eee",
+            width: "2.5em",
+            height: "2.5em",
+            backgroundImage: `url(${icon})`,
+            backgroundSize: "80%",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
           }}
         ></Box>
       ) : (
@@ -145,9 +149,11 @@ export default function Teams() {
           return (
             <Team
               key={team.name}
-              color={team.color.toString(16)}
+              color={colorToString(team.color)}
               name={team.name}
+              shortName={team.shortName}
               hp={team.homeBlock?.hp ?? 0}
+              icon={team.icon}
               blockCount={team.blocks.children.size}
               userCount={team.users.size}
               playerCount={team.players.children.size}

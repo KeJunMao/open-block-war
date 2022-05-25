@@ -6,17 +6,18 @@ import { IParseDanmuData } from "./type";
 export default class Danmu {
   static Apply(danmu: IParseDanmuData) {
     if (Game.Core.isGameOver) return;
-    const team = Game.Core.teams.find((team) =>
-      team.hasJoinKeyword(danmu.text)
-    );
-    if (team) {
-      team.makeUser(danmu.id, danmu.name);
-      return;
-    }
     const user = Team.GetUserById(danmu.id);
     if (user) {
       Danmu.ApplyTp(danmu, user);
       Danmu.ApplyFace(user);
+    } else {
+      const team = Game.Core.teams.find((team) =>
+        team.hasJoinKeyword(danmu.text)
+      );
+      if (team) {
+        team.makeUser(danmu.id, danmu.name);
+        return;
+      }
     }
   }
 

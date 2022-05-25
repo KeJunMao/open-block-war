@@ -8,27 +8,33 @@ export default class Team {
   blocks: Phaser.GameObjects.Group;
   users: Set<User> = new Set();
   homeBlock: Block | undefined;
+  public joinCommand: string[] = [];
   constructor(
     public scene: Phaser.Scene,
     public name: string,
     public color: number,
     public homeX: number,
     public homeY: number,
-    public joinCommand: string[],
+    joinCommand: string[],
     public shortName?: string,
-    public icon?: string
+    public icon?: string,
+    public hall?: string
   ) {
     this.players = new Phaser.GameObjects.Group(scene);
     this.blocks = new Phaser.GameObjects.Group(scene);
     this.homeBlock = Game.Core.map?.getBlock(homeX, homeY);
     this.initHomeBlock();
+    this.joinCommand = [...joinCommand, this.name];
+    if (this.shortName) {
+      this.joinCommand.push(this.shortName);
+    }
   }
 
   initHomeBlock() {
     if (this.homeBlock) {
       this.homeBlock?.setFillStyle(this.color);
       this.homeBlock.setTeam(this);
-      this.homeBlock?.setIsHome();
+      this.homeBlock?.setIsHome(this.hall);
     }
   }
 

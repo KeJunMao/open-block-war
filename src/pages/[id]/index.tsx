@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import Box from "@mui/material/Box";
 import { setLiveId, setTheme } from "../../store/configSlice";
+import { colorToString } from "../../paid/theme";
 
 export default function () {
   const { id } = useParams();
@@ -12,9 +13,20 @@ export default function () {
   const theme = searchParams.get("theme");
   dispatch(setLiveId(parseInt(id as string)));
   dispatch(setTheme(theme));
+
   const { liveId } = useSelector((state: RootState) => state.config);
+  const { styleTheme } = useSelector((state: RootState) => state.config);
+  const { theme: themeClassName } = useSelector(
+    (state: RootState) => state.config
+  );
   return (
-    <Box>
+    <Box
+      className={themeClassName}
+      sx={{
+        backgroundColor: colorToString(styleTheme.backgroundColor, "#ebffe2"),
+        color: colorToString(styleTheme.textColor, "#000000"),
+      }}
+    >
       <Box
         sx={{
           position: "fixed",

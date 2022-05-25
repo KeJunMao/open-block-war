@@ -4,5 +4,33 @@ body {
   padding: 0;
   overflow: hidden;
   height: 100vh;
-  background-color: #ebffe2;
+}
+
+.game-wapper {
+  box-sizing: border-box;
+  margin-top: 8px;
+}
+
+.war3 .game-wapper {
+  border: 19px solid #000;
+  border-image: url(https://s2.loli.net/2022/05/18/rnbFdsyLBRVQCMI.png) 38
+    repeat;
+  position: relative;
+}
+
+.war3 .game-wapper::before {
+  position: absolute;
+  content: "";
+  top: calc(-19.5px);
+  left: calc(-20px);
+  bottom: calc(-19px);
+  right: calc(-18px);
+  background: url(https://s2.loli.net/2022/05/18/ubnWZmoGI8CLjaK.png) no-repeat
+      top left,
+    url(https://s2.loli.net/2022/05/18/HrKpJkQaRmBYDqd.png) no-repeat top right,
+    url(https://s2.loli.net/2022/05/18/oRyMHKAnisbVxhZ.png) no-repeat bottom
+      left,
+    url(https://s2.loli.net/2022/05/18/RwSeM7VmXYzy2fv.png) no-repeat bottom
+      right;
+  background-size: 104px auto, 112px auto, 196px auto, 155px auto;
 }

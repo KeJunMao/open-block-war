@@ -18,7 +18,7 @@ const GameCard = () => {
           mode: Phaser.Scale.FIT,
           autoCenter: Phaser.Scale.CENTER_BOTH,
         },
-        backgroundColor: "#ebffe2",
+        backgroundColor: "#ffffff",
         parent: "game",
         scene: [PreloadScene, MainScene],
         physics: {
@@ -33,12 +33,14 @@ const GameCard = () => {
   }, []);
 
   return (
-    <Box
-      id="game"
-      sx={{
-        marginBottom: "-5px",
-      }}
-    ></Box>
+    <Box className="game-wapper">
+      <Box
+        id="game"
+        sx={{
+          marginBottom: "-5px",
+        }}
+      ></Box>
+    </Box>
   );
 };
 

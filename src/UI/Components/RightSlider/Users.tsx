@@ -58,24 +58,25 @@ const UserCard = ({
 
 export default function Users() {
   const users = useSelector((state: RootState) =>
-    state.root.teams.map((team) => [...team.users]).flat()
+    state.root.teams
+      .map((team) => [...team.users])
+      .flat()
+      .sort((a, b) => b.score - a.score)
   );
 
   return (
     <Box>
       {[
-        users
-          .sort((a, b) => b.score - a.score)
-          .map((user) => {
-            return (
-              <UserCard
-                score={user.score}
-                key={user.id}
-                name={user.name}
-                face={user.face}
-              />
-            );
-          }),
+        users.map((user) => {
+          return (
+            <UserCard
+              score={user.score}
+              key={user.id}
+              name={user.name}
+              face={user.face}
+            />
+          );
+        }),
       ]}
     </Box>
   );

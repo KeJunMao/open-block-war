@@ -1,4 +1,5 @@
 import Game from "../Game/Game";
+import { store } from "../store";
 import Team from "./Team";
 
 export default class Block extends Phaser.GameObjects.Rectangle {
@@ -8,37 +9,59 @@ export default class Block extends Phaser.GameObjects.Rectangle {
   hpText: Phaser.GameObjects.Text | undefined;
   teamName: Phaser.GameObjects.Text | undefined;
   tween: Phaser.Tweens.Tween | undefined;
+  hall: Phaser.GameObjects.Image | undefined;
   constructor(scene: Phaser.Scene, x = 0, y = 0) {
     super(scene, x, y, Game.BlockSize, Game.BlockSize);
     this.setOrigin(0, 0);
-    this.setFillStyle(0xebffe2);
+    const blockColor = store.getState().config.styleTheme.blockColor;
+    this.setFillStyle(blockColor !== undefined ? blockColor : 0xebffe2);
     this.setStrokeStyle(1, 0x000000, 0.1);
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this, true);
   }
 
-  setIsHome() {
+  setIsHome(hall?: string) {
+    if (hall) {
+      this.scene.load.image(hall, hall);
+      this.scene.load.once("complete", () => {
+        this.hall = this.scene.add
+          .image(0, 0, hall)
+          .setDisplaySize(Game.BlockSize * 2, Game.BlockSize * 2)
+          .setOrigin(0);
+        Phaser.Display.Align.In.Center(this.hall, this);
+        this._setIsHome();
+      });
+      this.scene.load.start();
+    } else {
+      this._setIsHome();
+    }
+  }
+
+  _setIsHome() {
     this.hp = 5;
     this.isHome = true;
     this.teamName = this.scene.add
-      .text(this.x, this.y + 40, `${this.team?.name}`, {
-        fontSize: "64px",
+      .text(0, 0, `${this.team?.name}`, {
+        fontSize: "48px",
         stroke: "#000000",
         strokeThickness: 5,
         fontStyle: "bold",
       })
       .setOrigin(0)
-      .setScale(0.8)
       .setAlpha(0.5);
-    this.teamName.setX(this.x - this.teamName.width / 4);
+    Phaser.Display.Align.To.BottomCenter(
+      this.teamName,
+      this.hall ? this.hall : this
+    );
     this.hpText = this.scene.add
-      .text(this.x + 4, this.y, `${this.hp}`, {
+      .text(0, 0, `${this.hp}`, {
         fontSize: "32px",
         stroke: "#000000",
         strokeThickness: 5,
         fontStyle: "bold",
       })
       .setOrigin(0);
+    Phaser.Display.Align.In.Center(this.hpText, this);
     this.tween = this.scene.tweens.add({
       targets: this.teamName,
       alpha: 0,
@@ -58,6 +81,8 @@ export default class Block extends Phaser.GameObjects.Rectangle {
     this.tween?.stop();
     this.teamName?.setActive(false);
     this.teamName?.setVisible(false);
+    this.hall?.setActive(false);
+    this.hall?.setVisible(false);
   }
 
   setTeam(team: Team) {

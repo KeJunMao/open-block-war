@@ -10,6 +10,7 @@ interface TeamConfig {
   homeTile?: string;
   joinCommand: string[];
   icon?: string;
+  hall?: string;
   shortName?: string;
 }
 
@@ -17,11 +18,15 @@ export interface ConfigState {
   gameName: string;
   teams: TeamConfig[];
   liveId: number;
+  theme: string;
+  styleTheme: any;
 }
 const initialState: ConfigState = {
   gameName: "",
   teams: [],
   liveId: 1439885,
+  theme: "default",
+  styleTheme: {},
 };
 
 export const configSlice = createSlice({
@@ -41,6 +46,7 @@ export const configSlice = createSlice({
         theme = liveIdConfig.defaultTheme;
       }
       const themeConfig = paid.getThemeConfig(theme);
+      state.theme = theme;
       for (let key in themeConfig) {
         // @ts-ignore
         state[key] = themeConfig[key];
