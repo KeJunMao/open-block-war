@@ -10,6 +10,7 @@ export default class Danmu {
     if (user) {
       Danmu.ApplyTp(danmu, user);
       Danmu.ApplyFace(user);
+      Danmu.ApplyObedience(danmu, user);
     } else {
       const team = Game.Core.teams.find((team) =>
         team.hasJoinKeyword(danmu.text)
@@ -18,6 +19,19 @@ export default class Danmu {
         team.makeUser(danmu.id, danmu.name);
         return;
       }
+    }
+  }
+  static ApplyObedience(danmu: IParseDanmuData, user: User) {
+    if (!danmu.text.startsWith("投靠")) {
+      return;
+    }
+
+    let [, teamKeyword] = danmu.text.split(" ");
+    const team = Game.Core.teams.find((team) =>
+      team.hasJoinKeyword(teamKeyword)
+    );
+    if (team) {
+      user.obedience(team);
     }
   }
 

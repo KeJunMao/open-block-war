@@ -12,8 +12,9 @@ export function Result() {
   if (!winTeam) {
     return <></>;
   }
-  const mvpUser = [...winTeam.users].sort((a, b) => b.score - a.score)[0];
-
+  const mvpUser = [...winTeam.users]
+    .filter((u) => u.sourceTeam === u.team)
+    .sort((a, b) => b.score - a.score)[0];
   return (
     <Box
       sx={{

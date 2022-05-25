@@ -84,5 +84,8 @@ export default class BilibiliLive {
       const entry = parseEntry(data);
       Entry.Apply(entry);
     });
+    // this.live.on("msg", (data) => {
+    //   console.log(data);
+    // });
   }
 }

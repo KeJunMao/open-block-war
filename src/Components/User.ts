@@ -5,6 +5,7 @@ import Team from "./Team";
 export default class User {
   isFaceLoadDone = false;
   score = 0;
+  sourceTeam: Team;
   constructor(
     public id: number,
     public name: string,
@@ -12,6 +13,7 @@ export default class User {
     public player: Player,
     public face?: string
   ) {
+    this.sourceTeam = team;
     this.load();
   }
 
@@ -44,6 +46,15 @@ export default class User {
     if (this.player?.team !== team) {
       this.player?.setTeam(team);
     }
+  }
+
+  // 投靠
+  obedience(team: Team) {
+    if (this.team === team) return;
+    this.setTeam(team);
+    this.sourceTeam = team;
+    this.score = 0;
+    this.player.tp();
   }
 
   get FaceKey() {

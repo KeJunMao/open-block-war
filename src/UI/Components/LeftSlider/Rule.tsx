@@ -75,6 +75,7 @@ export default function Rule() {
         <DanmuCard name="阵营名" text="加入战斗"></DanmuCard>
         <DanmuCard name="TP 或 B" text="回城"></DanmuCard>
         <DanmuCard name="任意弹幕" text="随机强化"></DanmuCard>
+        <DanmuCard name="投靠 阵营" text="改变阵营"></DanmuCard>
       </Box>
       <Divider
         sx={{
