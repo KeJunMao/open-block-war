@@ -27,7 +27,7 @@ export function Result() {
       <Box
         sx={{
           position: "absolute",
-          background: colorToString(styleTheme.backgroundColor, "0xebffe2"),
+          background: colorToString(styleTheme.backgroundColor, "#ebffe2"),
           p: 2,
           minWidth: "50rem",
           left: "50%",

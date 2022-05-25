@@ -18,7 +18,8 @@ export default class Team {
     joinCommand: string[],
     public shortName?: string,
     public icon?: string,
-    public hall?: string
+    public hall?: string,
+    public tile?: string
   ) {
     this.players = new Phaser.GameObjects.Group(scene);
     this.blocks = new Phaser.GameObjects.Group(scene);
@@ -28,6 +29,18 @@ export default class Team {
     if (this.shortName) {
       this.joinCommand.push(this.shortName);
     }
+    this.loadTile();
+  }
+
+  loadTile() {
+    if (!this.tile) return;
+    this.scene.load.image(this.tile, this.tile);
+    this.scene.load.once("complete", () => {
+      this.blocks.children.each((block) => {
+        if (this.tile) (block as Block).setTile(this.tile);
+      });
+    });
+    this.scene.load.start();
   }
 
   initHomeBlock() {

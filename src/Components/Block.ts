@@ -10,6 +10,7 @@ export default class Block extends Phaser.GameObjects.Rectangle {
   teamName: Phaser.GameObjects.Text | undefined;
   tween: Phaser.Tweens.Tween | undefined;
   hall: Phaser.GameObjects.Image | undefined;
+  tile: Phaser.GameObjects.Image | undefined;
   constructor(scene: Phaser.Scene, x = 0, y = 0) {
     super(scene, x, y, Game.BlockSize, Game.BlockSize);
     this.setOrigin(0, 0);
@@ -20,6 +21,19 @@ export default class Block extends Phaser.GameObjects.Rectangle {
     this.scene.physics.add.existing(this, true);
   }
 
+  setTile(tile: string) {
+    if (this.tile) {
+      this.tile.setTexture(tile);
+    } else {
+      this.setVisible(false);
+      this.tile = this.scene.add
+        .image(0, 0, tile)
+        .setDisplaySize(Game.BlockSize, Game.BlockSize)
+        .setDepth(this.depth + 1);
+      Phaser.Display.Align.In.Center(this.tile, this);
+    }
+  }
+
   setIsHome(hall?: string) {
     if (hall) {
       this.scene.load.image(hall, hall);
@@ -27,7 +41,8 @@ export default class Block extends Phaser.GameObjects.Rectangle {
         this.hall = this.scene.add
           .image(0, 0, hall)
           .setDisplaySize(Game.BlockSize * 2, Game.BlockSize * 2)
-          .setOrigin(0);
+          .setOrigin(0)
+          .setDepth(this.depth + 2);
         Phaser.Display.Align.In.Center(this.hall, this);
         this._setIsHome();
       });
@@ -48,7 +63,8 @@ export default class Block extends Phaser.GameObjects.Rectangle {
         fontStyle: "bold",
       })
       .setOrigin(0)
-      .setAlpha(0.5);
+      .setAlpha(0.5)
+      .setDepth(this.depth + 2);
     Phaser.Display.Align.To.BottomCenter(
       this.teamName,
       this.hall ? this.hall : this
@@ -60,7 +76,8 @@ export default class Block extends Phaser.GameObjects.Rectangle {
         strokeThickness: 5,
         fontStyle: "bold",
       })
-      .setOrigin(0);
+      .setOrigin(0)
+      .setDepth(this.depth + 3);
     Phaser.Display.Align.In.Center(this.hpText, this);
     this.tween = this.scene.tweens.add({
       targets: this.teamName,
@@ -105,6 +122,10 @@ export default class Block extends Phaser.GameObjects.Rectangle {
     this.setFillStyle(team.color);
     this.team = team;
     team.blocks.add(this);
+    // set tile
+    if (team.tile) {
+      this.setTile(team.tile);
+    }
   }
 
   update(): void {

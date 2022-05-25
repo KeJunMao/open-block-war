@@ -54,6 +54,7 @@ export default class Player extends Phaser.GameObjects.Container {
       loop: 0,
     });
     this.flash.stop();
+    this.setDepth(2000);
   }
 
   speedUp(count = 1) {

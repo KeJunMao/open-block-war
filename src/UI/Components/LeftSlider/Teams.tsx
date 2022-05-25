@@ -15,6 +15,7 @@ interface TeamProps {
   color: string;
   icon?: string;
   shortName?: string;
+  tile?: string;
 }
 
 const Team: FC<TeamProps> = ({
@@ -27,6 +28,7 @@ const Team: FC<TeamProps> = ({
   userCount,
   icon,
   shortName,
+  tile,
 }) => {
   return (
     <Box
@@ -35,6 +37,7 @@ const Team: FC<TeamProps> = ({
         alignItems: "center",
         fontSize: "2rem",
         backgroundColor: color,
+        backgroundImage: `url(${tile})`,
       }}
     >
       <Box
@@ -157,6 +160,7 @@ export default function Teams() {
               blockCount={team.blocks.children.size}
               userCount={team.users.size}
               playerCount={team.players.children.size}
+              tile={team.tile}
               index={index}
             ></Team>
           );

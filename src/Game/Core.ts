@@ -42,7 +42,8 @@ export default class Core {
         team.joinCommand,
         team.shortName,
         team.icon,
-        team.hall
+        team.hall,
+        team.tile
       );
     });
 

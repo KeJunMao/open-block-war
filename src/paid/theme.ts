@@ -216,6 +216,7 @@ const themes: {
         joinCommand: ["红"],
         icon: "/theme/war3/icons/hum.png",
         hall: "/theme/war3/halls/hum.png",
+        tile: "/theme/war3/tiles/hum.png",
       },
       {
         homeX: 32,
@@ -226,6 +227,7 @@ const themes: {
         joinCommand: ["蓝"],
         icon: "/theme/war3/icons/orc.png",
         hall: "/theme/war3/halls/orc.png",
+        tile: "/theme/war3/tiles/orc.png",
       },
       {
         homeX: 2,
@@ -236,6 +238,7 @@ const themes: {
         joinCommand: ["黄"],
         icon: "/theme/war3/icons/ud.png",
         hall: "/theme/war3/halls/ud.png",
+        tile: "/theme/war3/tiles/ud.png",
       },
       {
         homeX: 32,
@@ -246,6 +249,7 @@ const themes: {
         joinCommand: ["绿"],
         icon: "/theme/war3/icons/ne.png",
         hall: "/theme/war3/halls/ne.png",
+        tile: "/theme/war3/tiles/ne.png",
       },
     ],
     gameName: "魔兽争霸",
