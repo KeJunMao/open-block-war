@@ -59,7 +59,7 @@ export default class Player extends Phaser.GameObjects.Container {
 
   speedUp(count = 1) {
     this.speedCoefficient += count;
-    let speed = 220 * Math.log(this.speedCoefficient + 1) + Player.MinSpeed;
+    let speed = 300 * Math.log(this.speedCoefficient + 1) + Player.MinSpeed;
     this.setSpeed(speed);
     this.children.forEach((v) => {
       v.setSpeed(speed);
@@ -141,8 +141,11 @@ export default class Player extends Phaser.GameObjects.Container {
     this.team.players.remove(this);
     this.team = team;
     this.team.players.add(this);
-    if (this.user?.team !== team) {
-      this.user?.setTeam(team);
+    this.children.forEach((v) => v.setTeam(team));
+    if (!this.parent) {
+      if (this.user?.team !== team) {
+        this.user?.setTeam(team);
+      }
     }
   }
 
