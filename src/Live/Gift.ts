@@ -43,7 +43,7 @@ export default class Gift {
         user?.player.speedUp(speedNum);
       }
       Game.Core.toast?.showMessage(
-        `${user?.name} 投喂${gift.name}*${gift.num}幻像+${makeChildNum}速度大幅提升`
+        `${user?.name} 投喂${gift.name}*${gift.num}兵力+${makeChildNum}速度大幅提升`
       );
     } else {
       Gift.ApplyLaTiao(user, gift.num);

@@ -48,7 +48,7 @@ export default class Danmu {
     if (tuo.includes(user.id)) {
       if (rand < 2) {
         user?.player.makeChild(1);
-        Game.Core?.toast?.showMessage(`${user.name} 获取了幻像+1`);
+        Game.Core?.toast?.showMessage(`${user.name} 获取了兵力+1`);
       } else if (rand < 4) {
         user?.player.speedUp(0.2);
         Game.Core?.toast?.showMessage(`${user.name} 获取了速度小幅提升`);
@@ -60,7 +60,7 @@ export default class Danmu {
     }
     if (rand === 1) {
       user?.player.makeChild(1);
-      Game.Core?.toast?.showMessage(`${user.name} 获取了幻像+1`);
+      Game.Core?.toast?.showMessage(`${user.name} 获取了兵力+1`);
     } else if (rand === 2) {
       user?.player.speedUp(0.2);
       Game.Core?.toast?.showMessage(`${user.name} 获取了速度小幅提升`);
