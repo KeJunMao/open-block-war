@@ -1,6 +1,12 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store";
+
+import "swiper/css";
 
 const GiftCard = ({ img, text }: { img: string; text: string }) => {
   return (
@@ -53,6 +59,37 @@ const DanmuCard = ({ name, text }: { text: string; name: string }) => {
   );
 };
 
+const PlayRule = () => {
+  const teams = useSelector((state: RootState) => state.root.teams);
+  if (teams.length >= 5) {
+    return (
+      <Swiper modules={[Autoplay]} autoplay={{ delay: 1200 }}>
+        <SwiperSlide>
+          <DanmuCard name="阵营名" text="加入战斗"></DanmuCard>
+        </SwiperSlide>
+        <SwiperSlide>
+          <DanmuCard name="TP 或 B" text="回城"></DanmuCard>
+        </SwiperSlide>
+        <SwiperSlide>
+          <DanmuCard name="任意弹幕" text="随机强化"></DanmuCard>
+        </SwiperSlide>
+        <SwiperSlide>
+          <DanmuCard name="投靠 阵营" text="改变阵营"></DanmuCard>
+        </SwiperSlide>
+      </Swiper>
+    );
+  } else {
+    return (
+      <>
+        <DanmuCard name="阵营名" text="加入战斗"></DanmuCard>
+        <DanmuCard name="TP 或 B" text="回城"></DanmuCard>
+        <DanmuCard name="任意弹幕" text="随机强化"></DanmuCard>
+        <DanmuCard name="投靠 阵营" text="改变阵营"></DanmuCard>
+      </>
+    );
+  }
+};
+
 export default function Rule() {
   return (
     <Box sx={{ mt: 1 }}>
@@ -72,10 +109,7 @@ export default function Rule() {
           // textAlign: "center",
         }}
       >
-        <DanmuCard name="阵营名" text="加入战斗"></DanmuCard>
-        <DanmuCard name="TP 或 B" text="回城"></DanmuCard>
-        <DanmuCard name="任意弹幕" text="随机强化"></DanmuCard>
-        <DanmuCard name="投靠 阵营" text="改变阵营"></DanmuCard>
+        <PlayRule></PlayRule>
       </Box>
       <Divider
         sx={{
