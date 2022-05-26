@@ -1,4 +1,5 @@
 import Block from "../Components/Block";
+import GameTime from "../Components/GameTime";
 import Map from "../Components/Map";
 import { MessageToast } from "../Components/MessageToast";
 import Player from "../Components/Player";
@@ -18,6 +19,7 @@ export default class Core {
 
   static PLAYER_DEPTH = 2000;
   static TOAST_DEPTH = 3000;
+  time: GameTime | undefined;
 
   constructor(public game: Phaser.Game, public scene: Phaser.Scene) {
     this.live = new BilibiliLive(store.getState().config.liveId);
@@ -81,6 +83,7 @@ export default class Core {
         hold: 1000,
       },
     }).setDepth(Core.TOAST_DEPTH);
+    this.time = new GameTime(this.scene);
     this.asyncTeamsToStore();
   }
 
@@ -107,6 +110,15 @@ export default class Core {
     if (aliveTeams.length === 1) {
       this.onGameOver(aliveTeams[0]);
     }
+  }
+
+  checkGameOverByTime() {
+    const aliveTeams = this.teams.filter((team) => !team.isDie);
+    // get max blocks team
+    const maxBlocksTeam = aliveTeams.reduce((max, team) => {
+      return team.blocks.children.size > max.blocks.children.size ? team : max;
+    });
+    this.onGameOver(maxBlocksTeam);
   }
 
   onGameOver(team: Team) {

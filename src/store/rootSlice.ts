@@ -4,10 +4,12 @@ import Team from "../Components/Team";
 export interface RootDataState {
   teams: Team[];
   winTeam: Team | undefined;
+  time: number;
 }
 const initialState: RootDataState = {
   teams: [],
   winTeam: undefined,
+  time: 0,
 };
 
 export const rootSlice = createSlice({
@@ -23,9 +25,12 @@ export const rootSlice = createSlice({
     setWinTeam: (state, action) => {
       state.winTeam = action.payload;
     },
+    setTime(state, action) {
+      state.time = action.payload;
+    },
   },
 });
 
-export const { setTeams, updateTeams, setWinTeam } = rootSlice.actions;
+export const { setTeams, updateTeams, setWinTeam, setTime } = rootSlice.actions;
 
 export default rootSlice.reducer;

@@ -36,8 +36,8 @@ export function Result() {
           transform: "translate(-50%, -50%)",
         }}
       >
-        <Typography variant="h4" align="center" gutterBottom>
-          {winTeam.name}方胜利
+        <Typography variant="h3" align="center" gutterBottom>
+          {mvpUser ? `${winTeam.name}方胜利` : "比赛结束"}
         </Typography>
         <Divider sx={{ m: 2 }}></Divider>
 
@@ -48,10 +48,10 @@ export function Result() {
             height: "8rem",
             mb: 2,
           }}
-          src={mvpUser.face}
+          src={mvpUser?.face}
         ></Avatar>
-        <Typography variant="h4" align="center" gutterBottom>
-          MVP: {mvpUser.name}
+        <Typography color="#eaeb5c" variant="h4" align="center" gutterBottom>
+          MVP: {mvpUser?.name ?? "无"}
         </Typography>
       </Box>
     </Box>
