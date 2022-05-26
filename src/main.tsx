@@ -1,4 +1,6 @@
+import "swiper/css/bundle";
 import "./style.css";
+
 import { Suspense } from "react";
 import React from "react";
 import ReactDOM from "react-dom/client";

@@ -123,6 +123,7 @@ export default class Core {
   }
 
   onGameOver(team: Team) {
+    if (this.isGameOver) return;
     this.isGameOver = true;
     this.scene.scene.pause();
     store.dispatch(setWinTeam(team));

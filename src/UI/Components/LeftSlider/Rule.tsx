@@ -6,8 +6,6 @@ import { Autoplay } from "swiper";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 
-import "swiper/css";
-
 const GiftCard = ({ img, text }: { img: string; text: string }) => {
   return (
     <Box
