@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { useSelector } from "react-redux";
+import { colorToString } from "../../../paid/theme";
 import { RootState } from "../../../store";
 import formatNumber from "../../../utils/formatNumber";
 
@@ -8,10 +9,14 @@ const UserCard = ({
   name,
   face,
   score,
+  borderColor,
+  borderImage,
 }: {
   name: string;
   face?: string;
   score: number | string;
+  borderColor?: string;
+  borderImage?: string;
 }) => {
   return (
     <Box
@@ -27,6 +32,9 @@ const UserCard = ({
           width: "4rem",
           height: "4rem",
           mr: 1,
+          boxSizing: "border-box",
+          border: `.2em solid ${borderColor}`,
+          borderImage: `${borderImage} 1`,
         }}
       >
         <img
@@ -105,6 +113,8 @@ export default function Users() {
               key={user.id}
               name={user.name}
               face={user.face}
+              borderColor={colorToString(user.team.color)}
+              borderImage={`url(${user.team.tile})`}
             />
           );
         })}
