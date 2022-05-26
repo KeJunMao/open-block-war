@@ -8,6 +8,7 @@ import BilibiliLive from "../Live/Bilibili";
 import { store } from "../store";
 import { ConfigState } from "../store/configSlice";
 import { setTeams, updateTeams, setWinTeam } from "../store/rootSlice";
+import { setTodayMvpUsers } from "../store/topSlice";
 
 export default class Core {
   map: Map | undefined;
@@ -125,6 +126,10 @@ export default class Core {
     this.isGameOver = true;
     this.scene.scene.pause();
     store.dispatch(setWinTeam(team));
+    const mvpUser = team.mvpUser;
+    if (mvpUser) {
+      store.dispatch(setTodayMvpUsers(mvpUser));
+    }
     setTimeout(() => {
       store.dispatch(setWinTeam(undefined));
       this.scene.scene.restart(this.scene);

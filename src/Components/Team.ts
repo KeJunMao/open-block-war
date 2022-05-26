@@ -93,6 +93,12 @@ export default class Team {
     }
   }
 
+  get mvpUser(): User | undefined {
+    return [...this.users]
+      .filter((u) => u.sourceTeam === u.team)
+      .sort((a, b) => b.score - a.score)[0];
+  }
+
   get isDie() {
     return this.homeBlock?.isHome === false;
   }

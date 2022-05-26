@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
@@ -10,7 +11,7 @@ const UserCard = ({
 }: {
   name: string;
   face?: string;
-  score: number;
+  score: number | string;
 }) => {
   return (
     <Box
@@ -23,8 +24,8 @@ const UserCard = ({
     >
       <Box
         sx={{
-          width: "5rem",
-          height: "5rem",
+          width: "4rem",
+          height: "4rem",
           mr: 1,
         }}
       >
@@ -40,16 +41,29 @@ const UserCard = ({
       <Box
         sx={{
           fontWeight: "bolder",
+          display: "flex",
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "space-between",
         }}
       >
-        <Box>{name}</Box>
+        <Typography
+          sx={{
+            flex: 1,
+            width: 0,
+          }}
+          noWrap
+          fontSize="2rem"
+        >
+          {name}
+        </Typography>
         <Box
           sx={{
             color: "#eaeb5c",
             textShadow: "2px 2px black",
           }}
         >
-          {formatNumber(score)}
+          {typeof score === "string" ? score : formatNumber(score)}
         </Box>
       </Box>
     </Box>
@@ -64,10 +78,27 @@ export default function Users() {
       .sort((a, b) => b.score - a.score)
   );
 
+  const todayMvpUsers = useSelector(
+    (state: RootState) => state.top.todayMvpUsers
+  );
+
   return (
-    <Box>
-      {[
-        users.map((user) => {
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        height: "95vh",
+        justifyContent: "space-between",
+      }}
+    >
+      <Box
+        sx={{
+          flex: 1,
+          overflow: "hidden",
+          height: 0,
+        }}
+      >
+        {users.map((user) => {
           return (
             <UserCard
               score={user.score}
@@ -76,8 +107,34 @@ export default function Users() {
               face={user.face}
             />
           );
-        }),
-      ]}
+        })}
+      </Box>
+      <Box
+        sx={{
+          minHeight: "18rem",
+        }}
+      >
+        <Typography
+          sx={{
+            p: 1,
+          }}
+          fontWeight="bold"
+          variant="h4"
+          align="center"
+        >
+          今日MVP
+        </Typography>
+        {todayMvpUsers.map((user) => {
+          return (
+            <UserCard
+              score={`${user.count}次`}
+              key={user.id}
+              name={user.name}
+              face={user.face}
+            />
+          );
+        })}
+      </Box>
     </Box>
   );
 }
