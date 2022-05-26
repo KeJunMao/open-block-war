@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
+import GameTime from "../../../Components/GameTime";
 import { RootState } from "../../../store";
 
 export default function Title() {
@@ -31,7 +32,7 @@ export default function Title() {
         variant="h4"
         align="center"
       >
-        第{time}年
+        倒计时{GameTime.EndTime - time}秒
       </Typography>
     </Box>
   );
