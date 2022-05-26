@@ -134,7 +134,7 @@ export default function Users() {
         >
           今日MVP
         </Typography>
-        {todayMvpUsers.map((user) => {
+        {todayMvpUsers.slice(0, 3).map((user) => {
           return (
             <UserCard
               score={`${user.count}次`}

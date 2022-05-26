@@ -44,10 +44,9 @@ export const topSlice = createSlice({
           _time: new Date().toJSON().split("T")[0],
         });
       }
-      state.todayMvpUsers = state.todayMvpUsers
-        .sort((a, b) => b.count - a.count)
-        .slice(0, 3);
-      // 保留前3
+      state.todayMvpUsers = state.todayMvpUsers.sort(
+        (a, b) => b.count - a.count
+      );
     },
   },
 });
