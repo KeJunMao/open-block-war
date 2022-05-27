@@ -234,6 +234,17 @@ const themes: {
         icon: "/theme/war3/icons/hum.png",
         hall: "/theme/war3/halls/hum.png",
         tile: "/theme/war3/tiles/hum.png",
+        npcs: [
+          {
+            name: "步兵",
+            speed: 150,
+            scale: 0.8,
+            delay: 20000,
+            startAt: 20000,
+            loop: true,
+            face: "/theme/war3/npcs/footman.png",
+          },
+        ],
       },
       {
         homeX: 32,
@@ -245,6 +256,17 @@ const themes: {
         icon: "/theme/war3/icons/orc.png",
         hall: "/theme/war3/halls/orc.png",
         tile: "/theme/war3/tiles/orc.png",
+        npcs: [
+          {
+            name: "大G",
+            speed: 150,
+            scale: 0.8,
+            delay: 20000,
+            startAt: 20000,
+            loop: true,
+            face: "/theme/war3/npcs/grunt.png",
+          },
+        ],
       },
       {
         homeX: 2,
@@ -256,6 +278,17 @@ const themes: {
         icon: "/theme/war3/icons/ud.png",
         hall: "/theme/war3/halls/ud.png",
         tile: "/theme/war3/tiles/ud.png",
+        npcs: [
+          {
+            name: "食尸鬼",
+            speed: 150,
+            scale: 0.8,
+            delay: 20000,
+            startAt: 20000,
+            loop: true,
+            face: "/theme/war3/npcs/ghoul.png",
+          },
+        ],
       },
       {
         homeX: 32,
@@ -267,6 +300,17 @@ const themes: {
         icon: "/theme/war3/icons/ne.png",
         hall: "/theme/war3/halls/ne.png",
         tile: "/theme/war3/tiles/ne.png",
+        npcs: [
+          {
+            name: "弓箭手",
+            speed: 150,
+            scale: 0.8,
+            delay: 20000,
+            startAt: 20000,
+            loop: true,
+            face: "/theme/war3/npcs/archer.png",
+          },
+        ],
       },
     ],
     gameName: "魔兽争霸",

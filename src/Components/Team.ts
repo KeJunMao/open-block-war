@@ -1,5 +1,7 @@
 import Game from "../Game/Game";
+import { NpcConfig } from "../store/configSlice";
 import Block from "./Block";
+import NpcGroup from "./NpcGroup";
 import Player from "./Player";
 import User from "./User";
 
@@ -9,6 +11,7 @@ export default class Team {
   users: Set<User> = new Set();
   homeBlock: Block | undefined;
   public joinCommand: string[] = [];
+  npcsGroup: NpcGroup;
   constructor(
     public scene: Phaser.Scene,
     public name: string,
@@ -19,12 +22,14 @@ export default class Team {
     public shortName?: string,
     public icon?: string,
     public hall?: string,
-    public tile?: string
+    public tile?: string,
+    public npcsConfig?: NpcConfig[]
   ) {
     this.players = new Phaser.GameObjects.Group(scene);
     this.blocks = new Phaser.GameObjects.Group(scene);
     this.homeBlock = Game.Core.map?.getBlock(homeX, homeY);
     this.joinCommand = [...joinCommand, this.name];
+    this.npcsGroup = new NpcGroup(this.scene, this, this.npcsConfig);
     if (this.shortName) {
       this.joinCommand.push(this.shortName);
     }
@@ -39,6 +44,7 @@ export default class Team {
     this.scene.load.image(this.tile, this.tile);
     this.scene.load.once("complete", () => {
       this.initHomeBlock();
+      this.initNpcGroup();
     });
     this.scene.load.start();
   }
@@ -49,6 +55,10 @@ export default class Team {
       this.homeBlock.setTeam(this);
       this.homeBlock?.setIsHome(this.hall);
     }
+  }
+
+  initNpcGroup() {
+    this.npcsGroup.init();
   }
 
   makeUser(id: number, name: string) {
@@ -82,7 +92,7 @@ export default class Team {
   }
 
   hasJoinKeyword(text: string) {
-    return this.joinCommand.some((c) => text.includes(c));
+    return this.joinCommand.some((c) => c === text);
   }
 
   obedience(team: Team) {
@@ -90,6 +100,7 @@ export default class Team {
       [...this.users].forEach((user) => {
         user.setTeam(team);
       });
+      this.npcsGroup?.setDie();
       Game.Core.time?.reset();
     }
   }

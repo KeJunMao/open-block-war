@@ -46,12 +46,14 @@ export default class Core {
         team.shortName,
         team.icon,
         team.hall,
-        team.tile
+        team.tile,
+        team.npcs
       );
     });
 
     this.teams.forEach((team) => {
       const players = team.players;
+      const npcs = team.npcsGroup;
       const otherTeamsBlock = this.teams
         .filter((t) => t !== team)
         .map((t) => t.blocks);
@@ -61,9 +63,21 @@ export default class Core {
         //@ts-ignore
         this.onPlayerOverlapBlock.bind(this)
       );
+      this.scene.physics.add.collider(
+        npcs,
+        otherTeamsBlock,
+        //@ts-ignore
+        this.onPlayerOverlapBlock.bind(this)
+      );
       if (this.map) {
         this.scene.physics.add.collider(
           players,
+          this.map.blocksGroup,
+          //@ts-ignore
+          this.onPlayerOverlapBlock.bind(this)
+        );
+        this.scene.physics.add.collider(
+          npcs,
           this.map.blocksGroup,
           //@ts-ignore
           this.onPlayerOverlapBlock.bind(this)

@@ -1,7 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import paid from "../paid";
 
-interface TeamConfig {
+export interface NpcConfig {
+  name: string;
+  speed: number;
+  scale: number;
+  delay: number;
+  face: string;
+  startAt?: number;
+  loop?: boolean;
+}
+
+export interface TeamConfig {
   homeX: number;
   homeY: number;
   name: string;
@@ -12,6 +22,7 @@ interface TeamConfig {
   icon?: string;
   hall?: string;
   shortName?: string;
+  npcs?: NpcConfig[];
 }
 
 export interface ConfigState {
