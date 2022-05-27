@@ -90,6 +90,7 @@ export default class Team {
       [...this.users].forEach((user) => {
         user.setTeam(team);
       });
+      Game.Core.time?.reset();
     }
   }
 

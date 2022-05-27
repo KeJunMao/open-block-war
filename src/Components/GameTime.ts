@@ -14,6 +14,10 @@ export default class GameTime {
     });
   }
 
+  reset() {
+    this.time = 0;
+  }
+
   update() {
     this.time += 1;
     store.dispatch(setTime(this.time));
