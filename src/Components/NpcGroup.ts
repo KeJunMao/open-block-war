@@ -1,3 +1,4 @@
+import Game from "../Game/Game";
 import { NpcConfig } from "../store/configSlice";
 import Npc from "./Npc";
 import Team from "./Team";
@@ -24,7 +25,13 @@ export default class NpcGroup extends Phaser.GameObjects.Group {
             delay: config.delay,
             callback: () => {
               if (this.npcs.has(config.name)) {
-                this.npcs.get(config.name)?.makeChild();
+                const rand = Phaser.Math.Between(0, 100);
+                if (config.rate >= rand) {
+                  this.npcs.get(config.name)?.makeChild();
+                  Game.Core.toast?.showMessage(
+                    `${this.team.name}增援${config.name}已抵达`
+                  );
+                }
               } else {
                 const npc = new Npc(this.scene, 0, 0, this.team);
                 npc.setScale(config.scale);
@@ -51,6 +58,7 @@ export default class NpcGroup extends Phaser.GameObjects.Group {
     this.farms.forEach((v) => v.destroy());
     this.npcs.forEach((v) => {
       v.setDie();
+      this.remove(v, true, true);
     });
   }
 }

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import paid from "../paid";
 
 export interface NpcConfig {
+  rate: number;
   name: string;
   speed: number;
   scale: number;
