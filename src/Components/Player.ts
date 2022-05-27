@@ -60,7 +60,9 @@ export default class Player extends Phaser.GameObjects.Container {
 
   speedUp(count = 1) {
     this.speedCoefficient += count;
-    let speed = 300 * Math.log(this.speedCoefficient + 1) + Player.MinSpeed;
+    // 暂时解除速度限制
+    // let speed = 300 * Math.log(this.speedCoefficient + 1) + Player.MinSpeed;
+    const speed = this.speed + 50 * count;
     this.setSpeed(speed);
     this.children.forEach((v) => {
       v.setSpeed(speed);
