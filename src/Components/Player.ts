@@ -10,6 +10,7 @@ export default class Player extends Phaser.GameObjects.Container {
   user: User | undefined;
   children: Player[] = [];
   speedCoefficient: number = 0;
+  sizeCoefficient: number = 0;
   line?: Phaser.GameObjects.Line;
   flash: Phaser.Tweens.Tween;
   flashStar: Phaser.GameObjects.Image;
@@ -66,6 +67,14 @@ export default class Player extends Phaser.GameObjects.Container {
     });
   }
 
+  sizeUp(count = 1) {
+    this.sizeCoefficient += count;
+    let size = 0.2 * Math.log(this.sizeCoefficient + 1) + 1;
+    this.setScale(size);
+    this.Body.setCircle((Game.BlockSize * size) / 2);
+    this.children.forEach((v) => v.setScale(size));
+  }
+
   makeChild(count = 1) {
     if (this.team.homeBlock) {
       const { x, y } = this.team.homeBlock;
@@ -77,6 +86,7 @@ export default class Player extends Phaser.GameObjects.Container {
         player.setFace(textureKey);
         player.setSpeed(this.speed);
         player.setTeam(this.team);
+        player.setScale(this.scale);
         this.children.push(player);
       }
     }

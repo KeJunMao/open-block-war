@@ -21,6 +21,9 @@ export default class Gift {
       case "小花花":
         Gift.ApplyFlower(user, gift.num);
         break;
+      case "牛哇牛哇":
+        Gift.ApplyNiu(user, gift.num);
+        break;
       default:
         Gift.ApplyGift(user, gift);
         break;
@@ -61,5 +64,12 @@ export default class Gift {
   static ApplyLaTiao(user: User, num: number) {
     user?.player.speedUp(0.2 * num);
     Game.Core.toast?.showMessage(`${user?.name} 投喂辣条*${num}速度小幅提升`);
+  }
+
+  static ApplyNiu(user: User, num: number) {
+    user?.player.sizeUp(num);
+    Game.Core.toast?.showMessage(
+      `${user?.name} 投喂牛哇牛哇*${num}体积大幅提升`
+    );
   }
 }

@@ -69,7 +69,7 @@ const PlayRule = () => {
           <DanmuCard name="TP 或 B" text="回城"></DanmuCard>
         </SwiperSlide>
         <SwiperSlide>
-          <DanmuCard name="任意弹幕" text="随机强化"></DanmuCard>
+          <DanmuCard name="任意弹幕" text="强化盲盒"></DanmuCard>
         </SwiperSlide>
         <SwiperSlide>
           <DanmuCard name="投靠 阵营" text="改变阵营"></DanmuCard>
@@ -119,12 +119,16 @@ export default function Rule() {
         text="加速"
       />
       <GiftCard
-        img="https://s1.hdslb.com/bfs/live/92c5258517d1477797b54c5fdaeb8c66dc962ed6.png@80w_80h_1e_1c.png"
+        img="https://i0.hdslb.com/bfs/live/a4c8a134c059665d8d477a803b12430222d8e7b8.webp"
         text="超级加速"
       />
       <GiftCard
-        img="https://s1.hdslb.com/bfs/live/79b6d0533fc988f2800fc5bb4fe3722c825f746f.png@80w_80h_1e_1c.png"
+        img="https://i0.hdslb.com/bfs/live/7dad99cce8772d1045dec6916a55642491989819.webp"
         text="增派兵力"
+      />
+      <GiftCard
+        img="https://i0.hdslb.com/bfs/live/419bf4e5bd6fb4e1185fb73a466c6c884d0f2ba2.webp"
+        text="变大"
       />
     </Box>
   );

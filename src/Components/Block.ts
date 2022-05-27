@@ -79,18 +79,18 @@ export default class Block extends Phaser.GameObjects.Rectangle {
       .setOrigin(0)
       .setDepth(this.depth + 3);
     Phaser.Display.Align.In.Center(this.hpText, this);
-    if (!this.team?.icon) {
-      this.tween = this.scene.tweens.add({
-        targets: this.teamName,
-        alpha: 0,
-        duration: 500,
-        yoyo: true,
-        repeat: -1,
-        hold: 5000,
-        delay: 5000,
-        repeatDelay: 5000,
-      });
-    }
+    // if (!this.team?.icon) {
+    //   this.tween = this.scene.tweens.add({
+    //     targets: this.teamName,
+    //     alpha: 0,
+    //     duration: 500,
+    //     yoyo: true,
+    //     repeat: -1,
+    //     hold: 5000,
+    //     delay: 5000,
+    //     repeatDelay: 5000,
+    //   });
+    // }
   }
 
   setIsNotHome() {

@@ -64,6 +64,9 @@ export default class Danmu {
     } else if (rand === 2) {
       user?.player.speedUp(0.2);
       Game.Core?.toast?.showMessage(`${user.name} 获取了速度小幅提升`);
+    } else if (rand === 3) {
+      user?.player.sizeUp(0.2);
+      Game.Core?.toast?.showMessage(`${user.name} 获取了体积小幅变大`);
     } else {
       user?.player.speedUp(0.02);
       Game.Core?.toast?.showMessage(`${user.name} 获取了速度微微提升了`);
