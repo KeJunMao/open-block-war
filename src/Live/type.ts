@@ -19,3 +19,7 @@ export interface IParseEntryData {
   name: string;
   face: string;
 }
+export interface IParseInteractData {
+  id: number;
+  name: string;
+}
