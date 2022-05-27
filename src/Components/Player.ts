@@ -61,8 +61,8 @@ export default class Player extends Phaser.GameObjects.Container {
   speedUp(count = 1) {
     this.speedCoefficient += count;
     // 暂时解除速度限制
-    // let speed = 300 * Math.log(this.speedCoefficient + 1) + Player.MinSpeed;
-    const speed = this.speed + 50 * count;
+    let speed = 350 * Math.log(this.speedCoefficient + 1) + Player.MinSpeed;
+    // const speed = this.speed + 50 * count;
     this.setSpeed(speed);
     this.children.forEach((v) => {
       v.setSpeed(speed);
@@ -71,7 +71,7 @@ export default class Player extends Phaser.GameObjects.Container {
 
   sizeUp(count = 1) {
     this.sizeCoefficient += count;
-    let size = 0.2 * Math.log(this.sizeCoefficient + 1) + 1;
+    let size = 0.4 * Math.log(this.sizeCoefficient + 1) + 1;
     this.setScale(size);
     this.Body.setCircle((Game.BlockSize * size) / 2);
     this.children.forEach((v) => v.setScale(size));

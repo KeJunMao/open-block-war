@@ -13,6 +13,7 @@ interface TeamProps {
   userCount: number;
   index: number;
   color: string;
+  isDie: boolean;
   icon?: string;
   shortName?: string;
   tile?: string;
@@ -29,6 +30,7 @@ const Team: FC<TeamProps> = ({
   icon,
   shortName,
   tile,
+  isDie,
 }) => {
   return (
     <Box
@@ -73,74 +75,78 @@ const Team: FC<TeamProps> = ({
           {shortName ? shortName : name}
         </Box>
       )}
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          whiteSpace: "nowrap",
-        }}
-      >
+      {isDie ? (
+        <Box>已灭亡</Box>
+      ) : (
         <Box
           sx={{
-            mr: 1,
+            display: "flex",
+            alignItems: "center",
+            whiteSpace: "nowrap",
           }}
         >
           <Box
             sx={{
-              fontSize: "0.5em",
+              mr: 1,
             }}
-            component="span"
           >
-            城池
+            <Box
+              sx={{
+                fontSize: "0.5em",
+              }}
+              component="span"
+            >
+              城池
+            </Box>
+            {hp}
           </Box>
-          {hp}
-        </Box>
-        <Box
-          sx={{
-            mr: 1,
-          }}
-        >
           <Box
             sx={{
-              fontSize: "0.5em",
+              mr: 1,
             }}
-            component="span"
           >
-            领土
+            <Box
+              sx={{
+                fontSize: "0.5em",
+              }}
+              component="span"
+            >
+              领土
+            </Box>
+            {formatNumber(blockCount)}
           </Box>
-          {formatNumber(blockCount)}
-        </Box>
-        <Box
-          sx={{
-            mr: 1,
-          }}
-        >
           <Box
             sx={{
-              fontSize: "0.5em",
+              mr: 1,
             }}
-            component="span"
           >
-            领主
+            <Box
+              sx={{
+                fontSize: "0.5em",
+              }}
+              component="span"
+            >
+              领主
+            </Box>
+            {formatNumber(userCount)}
           </Box>
-          {formatNumber(userCount)}
-        </Box>
-        <Box
-          sx={{
-            mr: 1,
-          }}
-        >
           <Box
             sx={{
-              fontSize: "0.5em",
+              mr: 1,
             }}
-            component="span"
           >
-            人口
+            <Box
+              sx={{
+                fontSize: "0.5em",
+              }}
+              component="span"
+            >
+              人口
+            </Box>
+            {formatNumber(playerCount)}
           </Box>
-          {formatNumber(playerCount)}
         </Box>
-      </Box>
+      )}
     </Box>
   );
 };
@@ -165,6 +171,7 @@ export default function Teams() {
               playerCount={team.players.children.size}
               tile={team.tile}
               index={index}
+              isDie={team.isDie}
             ></Team>
           );
         })}
