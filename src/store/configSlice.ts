@@ -12,6 +12,25 @@ export interface FarmConfig {
   loop?: boolean;
 }
 
+export interface CardConfig {
+  rate: number;
+  goldRate: number;
+  name: string;
+  level: string;
+  speed: number;
+  scale: number;
+  face: string;
+  team: string;
+  // 是否唯一
+  unique?: boolean;
+  // 是否只有本队可以抽取
+  onlyTeam?: boolean;
+  // 氪佬是否无视队伍
+  goldIgnoreTeam?: boolean;
+  // 禁用抽取
+  disableDraw?: boolean;
+}
+
 export interface TeamConfig {
   homeX: number;
   homeY: number;
@@ -37,6 +56,7 @@ export interface ConfigState {
   theme: string;
   styleTheme: any;
   gifts: GiftConfig;
+  cards?: CardConfig[];
 }
 
 const initialState: ConfigState = {

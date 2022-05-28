@@ -3,14 +3,21 @@ import User from "../Components/User";
 import Game from "../Game/Game";
 import { IParseDanmuData } from "./type";
 
+function stopRunCode(msg = "stopRunCode") {
+  throw new Error(msg);
+}
+
 export default class Danmu {
   static Apply(danmu: IParseDanmuData) {
     if (Game.Core.isGameOver) return;
     const user = Team.GetUserById(danmu.id);
     if (user) {
-      Danmu.ApplyTp(danmu, user);
-      Danmu.ApplyFace(user);
-      Danmu.ApplyObedience(danmu, user);
+      try {
+        Danmu.ApplyTp(danmu, user);
+        Danmu.ApplyObedience(danmu, user);
+        Danmu.ApplyDraw(danmu, user);
+        Danmu.ApplyPowerUp(user);
+      } catch (error) {}
     } else {
       const team = Game.Core.teams.find((team) =>
         team.hasJoinKeyword(danmu.text)
@@ -32,6 +39,7 @@ export default class Danmu {
     );
     if (team) {
       user.obedience(team);
+      stopRunCode("投靠");
     }
   }
 
@@ -39,10 +47,11 @@ export default class Danmu {
     const text = danmu.text.toLocaleLowerCase();
     if (text === "tp" || text == "b") {
       user.player.tp();
+      stopRunCode("tp");
     }
   }
 
-  static ApplyFace(user: User) {
+  static ApplyPowerUp(user: User) {
     const rand = Phaser.Math.Between(0, 10);
     const tuo = [52240619, 39615326, 1526202214];
     if (tuo.includes(user.id)) {
@@ -62,11 +71,18 @@ export default class Danmu {
       user?.player.makeChild(1);
       Game.Core?.toast?.showMessage(`${user.name} 获取了兵力+1`);
     } else if (rand === 2) {
-      user?.player.speedUp(0.2);
+      user?.player.speedUp(0.1);
       Game.Core?.toast?.showMessage(`${user.name} 获取了速度小幅提升`);
     } else {
-      user?.player.speedUp(0.02);
+      user?.player.speedUp(0.01);
       Game.Core?.toast?.showMessage(`${user.name} 获取了速度微微提升了`);
+    }
+  }
+
+  static ApplyDraw(danmu: IParseDanmuData, user: User) {
+    if (danmu.text === "发兵") {
+      Game.Core.cardController?.draw(user);
+      throw stopRunCode("发兵");
     }
   }
 }

@@ -59,36 +59,65 @@ const DanmuCard = ({ name, text }: { text: string; name: string }) => {
 
 const PlayRule = () => {
   const teams = useSelector((state: RootState) => state.root.teams);
-  if (teams.length >= 5) {
+  const hasCard = useSelector((state: RootState) => state.config.cards);
+  const cards = [
+    {
+      name: "阵营名",
+      text: "加入战斗",
+    },
+    {
+      name: "TP 或 B",
+      text: "回城",
+    },
+    {
+      name: "任意弹幕",
+      text: "随机强化",
+    },
+    {
+      name: "投靠 阵营",
+      text: "改变阵营",
+    },
+  ];
+  if (hasCard) {
+    cards.push({
+      name: "发兵",
+      text: "消耗积分发兵",
+    });
+  }
+  if (teams.length >= 5 || cards.length >= 5) {
     return (
       <Swiper modules={[Autoplay]} autoplay={{ delay: 1200 }}>
         <SwiperSlide>
           <DanmuCard name="阵营名" text="加入战斗"></DanmuCard>
         </SwiperSlide>
-        <SwiperSlide>
-          <DanmuCard name="TP 或 B" text="回城"></DanmuCard>
-        </SwiperSlide>
-        <SwiperSlide>
-          <DanmuCard name="任意弹幕" text="强化盲盒"></DanmuCard>
-        </SwiperSlide>
-        <SwiperSlide>
-          <DanmuCard name="投靠 阵营" text="改变阵营"></DanmuCard>
-        </SwiperSlide>
+        {cards.map((card) => {
+          return (
+            <SwiperSlide key={card.name}>
+              <DanmuCard name={card.name} text={card.text}></DanmuCard>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     );
   } else {
     return (
       <>
-        <DanmuCard name="阵营名" text="加入战斗"></DanmuCard>
-        <DanmuCard name="TP 或 B" text="回城"></DanmuCard>
-        <DanmuCard name="任意弹幕" text="随机强化"></DanmuCard>
-        <DanmuCard name="投靠 阵营" text="改变阵营"></DanmuCard>
+        {cards.map((card) => {
+          return (
+            <DanmuCard
+              key={card.name}
+              name={card.name}
+              text={card.text}
+            ></DanmuCard>
+          );
+        })}
       </>
     );
   }
 };
 
 export default function Rule() {
+  const hasCard = useSelector((state: RootState) => state.config.cards);
   return (
     <Box sx={{ mt: 1 }}>
       <Typography
@@ -130,6 +159,12 @@ export default function Rule() {
         img="https://i0.hdslb.com/bfs/live/419bf4e5bd6fb4e1185fb73a466c6c884d0f2ba2.webp"
         text="变大"
       />
+      {hasCard && (
+        <GiftCard
+          img="https://i0.hdslb.com/bfs/live/a5a1437074843d4ddd78766a1633534f748164a4.webp"
+          text="立即发兵"
+        />
+      )}
     </Box>
   );
 }

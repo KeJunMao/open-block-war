@@ -91,6 +91,10 @@ export default class Team {
     return minTeam;
   }
 
+  static GetOtherTeams(team: Team) {
+    return Game.Core.teams.filter((t) => t !== team);
+  }
+
   hasJoinKeyword(text: string) {
     return this.joinCommand.some((c) => c === text);
   }

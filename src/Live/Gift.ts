@@ -24,6 +24,9 @@ export default class Gift {
       case "牛哇牛哇":
         Gift.ApplyNiu(user, gift.num);
         break;
+      case "i了i了":
+        Gift.ApplyIleIle(user, gift.num);
+        break;
       default:
         Gift.ApplyGift(user, gift);
         break;
@@ -58,8 +61,8 @@ export default class Gift {
   }
   static ApplyDaCall(user: User, num: number) {
     const callConfig = Game.Core.config?.gifts["打call"] ?? {
-      min: 5,
-      max: 10,
+      min: 4,
+      max: 7,
     };
     const rand = num * Phaser.Math.Between(callConfig.min, callConfig.max);
     user?.player.makeChild(rand);
@@ -72,8 +75,12 @@ export default class Gift {
 
   static ApplyNiu(user: User, num: number) {
     user?.player.sizeUp(num);
-    Game.Core.toast?.showMessage(
-      `${user?.name} 投喂牛哇牛哇*${num}体积大幅提升`
-    );
+    Game.Core.toast?.showMessage(`${user?.name} 投喂牛哇牛哇*${num}体积提升`);
+  }
+
+  static ApplyIleIle(user: User, num: number) {
+    for (let i = 0; i < num; i++) {
+      Game.Core.cardController?.goldDraw(user);
+    }
   }
 }

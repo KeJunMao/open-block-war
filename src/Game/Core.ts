@@ -9,6 +9,7 @@ import { store } from "../store";
 import { ConfigState } from "../store/configSlice";
 import { setTeams, updateTeams, setWinTeam } from "../store/rootSlice";
 import { setTodayMvpUsers } from "../store/topSlice";
+import CardController from "./CardController";
 
 export default class Core {
   map: Map | undefined;
@@ -21,6 +22,7 @@ export default class Core {
   static PLAYER_DEPTH = 2000;
   static TOAST_DEPTH = 3000;
   time: GameTime | undefined;
+  cardController: CardController | undefined;
 
   constructor(public game: Phaser.Game, public scene: Phaser.Scene) {
     this.live = new BilibiliLive(store.getState().config.liveId);
@@ -35,6 +37,7 @@ export default class Core {
     this.scene = scene;
     this.config = store.getState().config;
     this.map = new Map(this.scene);
+    this.cardController = new CardController(this.scene, this.config.cards);
     this.teams = this.config.teams.map((team) => {
       return new Team(
         this.scene,
@@ -57,28 +60,16 @@ export default class Core {
       const otherTeamsBlock = this.teams
         .filter((t) => t !== team)
         .map((t) => t.blocks);
-      this.scene.physics.add.collider(
-        players,
-        otherTeamsBlock,
-        //@ts-ignore
-        this.onPlayerOverlapBlock.bind(this)
-      );
-      this.scene.physics.add.collider(
-        npcs,
-        otherTeamsBlock,
-        //@ts-ignore
-        this.onPlayerOverlapBlock.bind(this)
-      );
       if (this.map) {
         this.scene.physics.add.collider(
           players,
-          this.map.blocksGroup,
+          [this.map.blocksGroup, ...otherTeamsBlock],
           //@ts-ignore
           this.onPlayerOverlapBlock.bind(this)
         );
         this.scene.physics.add.collider(
           npcs,
-          this.map.blocksGroup,
+          [this.map.blocksGroup, ...otherTeamsBlock],
           //@ts-ignore
           this.onPlayerOverlapBlock.bind(this)
         );

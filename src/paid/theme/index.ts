@@ -1,4 +1,5 @@
-import { ConfigState } from "../store/configSlice";
+import { ConfigState } from "../../store/configSlice";
+import war3 from "./war3";
 
 const themes: {
   [key: string]: Partial<ConfigState>;
@@ -228,108 +229,7 @@ const themes: {
       blockColor: 0xc6c6c6,
     },
   },
-  war3: {
-    teams: [
-      {
-        homeX: 2,
-        homeY: 2,
-        name: "人族",
-        shortName: "人",
-        color: 0xffffff,
-        joinCommand: ["红"],
-        icon: "/theme/war3/icons/hum.png",
-        hall: "/theme/war3/halls/hum.png",
-        tile: "/theme/war3/tiles/hum.png",
-        farms: [
-          {
-            name: "步兵",
-            speed: 150,
-            scale: 0.8,
-            delay: 20000,
-            startAt: 20000,
-            loop: true,
-            face: "/theme/war3/npcs/footman.png",
-            rate: 30,
-          },
-        ],
-      },
-      {
-        homeX: 32,
-        homeY: 2,
-        name: "兽族",
-        shortName: "兽",
-        color: 0xffffff,
-        joinCommand: ["蓝"],
-        icon: "/theme/war3/icons/orc.png",
-        hall: "/theme/war3/halls/orc.png",
-        tile: "/theme/war3/tiles/orc.png",
-        farms: [
-          {
-            name: "大G",
-            speed: 150,
-            scale: 0.8,
-            delay: 20000,
-            startAt: 20000,
-            loop: true,
-            face: "/theme/war3/npcs/grunt.png",
-            rate: 30,
-          },
-        ],
-      },
-      {
-        homeX: 2,
-        homeY: 32,
-        name: "不死",
-        shortName: "死",
-        color: 0xffffff,
-        joinCommand: ["黄"],
-        icon: "/theme/war3/icons/ud.png",
-        hall: "/theme/war3/halls/ud.png",
-        tile: "/theme/war3/tiles/ud.png",
-        farms: [
-          {
-            name: "食尸鬼",
-            speed: 150,
-            scale: 0.8,
-            delay: 20000,
-            startAt: 20000,
-            loop: true,
-            face: "/theme/war3/npcs/ghoul.png",
-            rate: 30,
-          },
-        ],
-      },
-      {
-        homeX: 32,
-        homeY: 32,
-        name: "暗夜",
-        shortName: "暗",
-        color: 0x333333,
-        joinCommand: ["绿"],
-        icon: "/theme/war3/icons/ne.png",
-        hall: "/theme/war3/halls/ne.png",
-        tile: "/theme/war3/tiles/ne.png",
-        farms: [
-          {
-            name: "弓箭手",
-            speed: 150,
-            scale: 0.8,
-            delay: 20000,
-            startAt: 20000,
-            loop: true,
-            face: "/theme/war3/npcs/archer.png",
-            rate: 30,
-          },
-        ],
-      },
-    ],
-    gameName: "魔兽争霸",
-    styleTheme: {
-      backgroundColor: 0x333333,
-      textColor: 0xffffff,
-      blockColor: 0x333333,
-    },
-  },
+  war3,
   sevenKingDom7: {
     teams: [
       {

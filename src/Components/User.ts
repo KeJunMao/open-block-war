@@ -1,11 +1,13 @@
 import Game from "../Game/Game";
 import Player from "./Player";
+import Slaves from "./Slaves";
 import Team from "./Team";
 
 export default class User {
   isFaceLoadDone = false;
   score = 0;
   sourceTeam: Team;
+  slaveGroup: Slaves;
   constructor(
     public id: number,
     public name: string,
@@ -15,6 +17,7 @@ export default class User {
   ) {
     this.sourceTeam = team;
     this.load();
+    this.slaveGroup = new Slaves(Game.Core.scene, this);
   }
 
   load() {
@@ -53,6 +56,7 @@ export default class User {
     if (this.team === team) return;
     if (team.isDie) return;
     this.setTeam(team);
+    this.slaveGroup.reset();
     this.sourceTeam = team;
     this.score = 0;
     this.player.tp();
