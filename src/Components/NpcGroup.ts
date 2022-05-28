@@ -60,5 +60,6 @@ export default class NpcGroup extends Phaser.GameObjects.Group {
       v.setDie();
       this.remove(v, true, true);
     });
+    this.clear(true, true);
   }
 }
