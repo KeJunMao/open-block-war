@@ -4,7 +4,7 @@ import { setTime } from "../store/rootSlice";
 
 export default class GameTime {
   public time: number = 0;
-  static EndTime: number = 900;
+  static EndTime: number = 500;
   constructor(public scene: Phaser.Scene) {
     this.scene.time.addEvent({
       delay: 1000,
