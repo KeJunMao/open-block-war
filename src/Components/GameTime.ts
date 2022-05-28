@@ -19,8 +19,8 @@ export default class GameTime {
   }
 
   updateTime() {
-    this.time += GameTime.EndTime / 4;
-    this.time = Math.min(this.time, GameTime.EndTime);
+    this.time -= GameTime.EndTime / 4;
+    this.time = Math.max(this.time, 0);
   }
 
   update() {
