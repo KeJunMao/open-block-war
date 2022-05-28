@@ -49,7 +49,8 @@ export default class Slaves extends Phaser.GameObjects.Group {
         this,
         this.user.player
       );
-      npc.setScale(slave.scale);
+      npc.user = this.user;
+      npc.setBodySize(slave.scale);
       npc.setSpeed(slave.speed);
       this.scene.load.image(slave.name, slave.face);
       this.scene.load.once("complete", () => {

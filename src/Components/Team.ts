@@ -103,6 +103,7 @@ export default class Team {
     if (this.isDie) {
       [...this.users].forEach((user) => {
         user.setTeam(team);
+        user.slaveGroup.reset();
       });
       this.farms?.setDie();
       Game.Core.time?.reset();

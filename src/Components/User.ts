@@ -62,6 +62,14 @@ export default class User {
     this.player.tp();
   }
 
+  tp() {
+    this.player.tp();
+    this.slaveGroup.children.each((player) => {
+      //@ts-ignore
+      player.tp();
+    });
+  }
+
   get FaceKey() {
     return `${this.id}-${this.name}`;
   }

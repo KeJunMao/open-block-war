@@ -46,7 +46,7 @@ export default class Danmu {
   static ApplyTp(danmu: IParseDanmuData, user: User) {
     const text = danmu.text.toLocaleLowerCase();
     if (text === "tp" || text == "b") {
-      user.player.tp();
+      user.tp();
       stopRunCode("tp");
     }
   }

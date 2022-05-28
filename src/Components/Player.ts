@@ -72,9 +72,13 @@ export default class Player extends Phaser.GameObjects.Container {
   sizeUp(count = 1) {
     this.sizeCoefficient += count;
     let size = 0.4 * Math.log(this.sizeCoefficient + 1) + 1;
+    this.setBodySize(size);
+  }
+
+  setBodySize(size: number) {
     this.setScale(size);
     this.Body.setCircle((Game.BlockSize * size) / 2);
-    this.children.forEach((v) => v.setScale(size));
+    this.children.forEach((v) => v.setBodySize(size));
   }
 
   makeChild(count = 1) {
@@ -115,7 +119,7 @@ export default class Player extends Phaser.GameObjects.Container {
       this.line = this.scene.add
         .line(0, 0, 0, 0, 100, 100, 0xffffff)
         .setOrigin(0)
-        .setAlpha(0.5)
+        .setAlpha(0.1)
         .setDepth(this.depth + 1);
     }
   }

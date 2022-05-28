@@ -21,6 +21,7 @@ export default class Npc extends Player {
       const { x, y } = this.team.homeBlock;
       for (let i = 0; i < count; i++) {
         const npc = new Npc(this.scene, x, y, this.team, this.group, this);
+        npc.user = this.user;
         // @ts-ignore
         const textureKey = this.face._textureKey;
         npc.user = this.user;
