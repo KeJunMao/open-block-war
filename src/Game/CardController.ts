@@ -23,7 +23,9 @@ export default class CardController {
       // 减少积分
       const needScore = 50 + user.slaveGroup.Count * 50;
       if (user.score < needScore) {
-        this.toast?.showMessage(`${user.name}需要${needScore}积分才能发兵`);
+        this.toast?.showMessage(
+          `${user.name}还需要${needScore - user.score}积分才能发兵`
+        );
         return;
       }
       user.score -= needScore;
@@ -99,7 +101,7 @@ export default class CardController {
         strokeThickness: 5,
       }),
       duration: {
-        hold: 1000,
+        hold: 2000,
       },
     }).setDepth(Core.TOAST_DEPTH);
   }
