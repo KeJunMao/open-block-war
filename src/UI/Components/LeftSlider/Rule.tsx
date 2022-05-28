@@ -145,7 +145,7 @@ export default function Rule() {
       ></Divider>
       <GiftCard
         img="https://s1.hdslb.com/bfs/live/d57afb7c5596359970eb430655c6aef501a268ab.png@80w_80h_1e_1c.png"
-        text="加速"
+        text="微微加速"
       />
       <GiftCard
         img="https://i0.hdslb.com/bfs/live/a4c8a134c059665d8d477a803b12430222d8e7b8.webp"
