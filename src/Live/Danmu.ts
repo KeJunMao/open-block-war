@@ -81,7 +81,8 @@ export default class Danmu {
 
   static ApplyDraw(danmu: IParseDanmuData, user: User) {
     if (danmu.text === "发兵") {
-      Game.Core.cardController?.draw(user);
+      // 消耗所有积分
+      while (Game.Core.cardController?.draw(user)) {}
       throw stopRunCode("发兵");
     }
   }

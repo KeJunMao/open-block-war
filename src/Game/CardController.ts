@@ -26,7 +26,7 @@ export default class CardController {
         this.toast?.showMessage(
           `${user.name}还需要${needScore - user.score}积分才能发兵`
         );
-        return;
+        return false;
       }
       user.score -= needScore;
     }
@@ -43,7 +43,9 @@ export default class CardController {
         face: config.face,
         level: config.level,
       });
+      return true;
     }
+    return false;
   }
   getRandomCard(configs: CardConfig[], isGold = false) {
     let totalRank = 0;
@@ -68,7 +70,7 @@ export default class CardController {
   }
 
   goldDraw(user: User) {
-    this.draw(user, true);
+    return this.draw(user, true);
   }
 
   getCardConfigs(team: string, ignoreTeam?: boolean) {
