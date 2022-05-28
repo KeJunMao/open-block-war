@@ -69,7 +69,7 @@ export default class Gift {
     Game.Core.toast?.showMessage(`${user?.name} 投喂打call*${num}幻像+${rand}`);
   }
   static ApplyLaTiao(user: User, num: number) {
-    user?.player.speedUp(0.2 * num);
+    user?.player.speedUp(0.05 * num);
     Game.Core.toast?.showMessage(`${user?.name} 投喂辣条*${num}速度小幅提升`);
   }
 
