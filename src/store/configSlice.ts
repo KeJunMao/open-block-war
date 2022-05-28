@@ -26,19 +26,26 @@ export interface TeamConfig {
   npcs?: NpcConfig[];
 }
 
+export interface GiftConfig {
+  [key: string]: any;
+}
+
 export interface ConfigState {
   gameName: string;
   teams: TeamConfig[];
   liveId: number;
   theme: string;
   styleTheme: any;
+  gifts: GiftConfig;
 }
+
 const initialState: ConfigState = {
   gameName: "",
   teams: [],
   liveId: 1439885,
   theme: "default",
   styleTheme: {},
+  gifts: {},
 };
 
 export const configSlice = createSlice({

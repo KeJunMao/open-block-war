@@ -138,6 +138,12 @@ const themes: {
       },
     ],
     gameName: "江湖传说",
+    gifts: {
+      打call: {
+        min: 1,
+        max: 1,
+      },
+    },
   },
   redAlert: {
     teams: [

@@ -57,7 +57,11 @@ export default class Gift {
     Game.Core.toast?.showMessage(`${user?.name} 投喂小花花*${num}速度大幅提升`);
   }
   static ApplyDaCall(user: User, num: number) {
-    const rand = num * Phaser.Math.Between(5, 10);
+    const callConfig = Game.Core.config?.gifts["打call"] ?? {
+      min: 5,
+      max: 10,
+    };
+    const rand = num * Phaser.Math.Between(callConfig.min, callConfig.max);
     user?.player.makeChild(rand);
     Game.Core.toast?.showMessage(`${user?.name} 投喂打call*${num}幻像+${rand}`);
   }
