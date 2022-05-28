@@ -240,7 +240,7 @@ const themes: {
         icon: "/theme/war3/icons/hum.png",
         hall: "/theme/war3/halls/hum.png",
         tile: "/theme/war3/tiles/hum.png",
-        npcs: [
+        farms: [
           {
             name: "步兵",
             speed: 150,
@@ -263,7 +263,7 @@ const themes: {
         icon: "/theme/war3/icons/orc.png",
         hall: "/theme/war3/halls/orc.png",
         tile: "/theme/war3/tiles/orc.png",
-        npcs: [
+        farms: [
           {
             name: "大G",
             speed: 150,
@@ -286,7 +286,7 @@ const themes: {
         icon: "/theme/war3/icons/ud.png",
         hall: "/theme/war3/halls/ud.png",
         tile: "/theme/war3/tiles/ud.png",
-        npcs: [
+        farms: [
           {
             name: "食尸鬼",
             speed: 150,
@@ -309,7 +309,7 @@ const themes: {
         icon: "/theme/war3/icons/ne.png",
         hall: "/theme/war3/halls/ne.png",
         tile: "/theme/war3/tiles/ne.png",
-        npcs: [
+        farms: [
           {
             name: "弓箭手",
             speed: 150,

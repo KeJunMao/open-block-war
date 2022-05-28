@@ -47,13 +47,13 @@ export default class Core {
         team.icon,
         team.hall,
         team.tile,
-        team.npcs
+        team.farms
       );
     });
 
     this.teams.forEach((team) => {
       const players = team.players;
-      const npcs = team.npcsGroup;
+      const npcs = team.farms;
       const otherTeamsBlock = this.teams
         .filter((t) => t !== team)
         .map((t) => t.blocks);

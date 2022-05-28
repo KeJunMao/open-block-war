@@ -1,15 +1,15 @@
 import Game from "../Game/Game";
-import { NpcConfig } from "../store/configSlice";
+import { FarmConfig } from "../store/configSlice";
 import Npc from "./Npc";
 import Team from "./Team";
 
-export default class NpcGroup extends Phaser.GameObjects.Group {
+export default class Farms extends Phaser.GameObjects.Group {
   farms: Map<string, Phaser.Time.TimerEvent> = new Map();
   npcs: Map<string, Npc> = new Map();
   constructor(
     scene: Phaser.Scene,
     public team: Team,
-    public configs?: NpcConfig[]
+    public configs?: FarmConfig[]
   ) {
     super(scene);
     this.runChildUpdate = true;
@@ -33,7 +33,13 @@ export default class NpcGroup extends Phaser.GameObjects.Group {
                   );
                 }
               } else {
-                const npc = new Npc(this.scene, 0, 0, this.team);
+                const npc = new Npc(
+                  this.scene,
+                  0,
+                  0,
+                  this.team,
+                  this,
+                );
                 npc.setScale(config.scale);
                 npc.setSpeed(config.speed);
                 this.scene.load.image(config.name, config.face);

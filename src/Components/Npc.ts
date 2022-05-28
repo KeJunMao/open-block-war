@@ -8,6 +8,7 @@ export default class Npc extends Player {
     x: number,
     y: number,
     team: Team,
+    public group: Phaser.GameObjects.Group,
     parent?: Player
   ) {
     super(scene, x, y, team, parent);
@@ -19,7 +20,7 @@ export default class Npc extends Player {
     if (this.team.homeBlock) {
       const { x, y } = this.team.homeBlock;
       for (let i = 0; i < count; i++) {
-        const npc = new Npc(this.scene, x, y, this.team, this);
+        const npc = new Npc(this.scene, x, y, this.team, this.group, this);
         // @ts-ignore
         const textureKey = this.face._textureKey;
         npc.user = this.user;
@@ -34,7 +35,7 @@ export default class Npc extends Player {
 
   setTeam(team: Team): void {
     this.team = team;
-    this.team.npcsGroup.add(this);
+    this.group.add(this);
     this.children.forEach((v) => v.setTeam(team));
   }
 

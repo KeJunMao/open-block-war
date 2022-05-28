@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import paid from "../paid";
 
-export interface NpcConfig {
+export interface FarmConfig {
   rate: number;
   name: string;
   speed: number;
@@ -23,7 +23,7 @@ export interface TeamConfig {
   icon?: string;
   hall?: string;
   shortName?: string;
-  npcs?: NpcConfig[];
+  farms?: FarmConfig[];
 }
 
 export interface GiftConfig {

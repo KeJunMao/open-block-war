@@ -1,7 +1,7 @@
 import Game from "../Game/Game";
-import { NpcConfig } from "../store/configSlice";
+import { FarmConfig } from "../store/configSlice";
 import Block from "./Block";
-import NpcGroup from "./NpcGroup";
+import Farms from "./Farms";
 import Player from "./Player";
 import User from "./User";
 
@@ -11,7 +11,7 @@ export default class Team {
   users: Set<User> = new Set();
   homeBlock: Block | undefined;
   public joinCommand: string[] = [];
-  npcsGroup: NpcGroup;
+  farms: Farms;
   constructor(
     public scene: Phaser.Scene,
     public name: string,
@@ -23,13 +23,13 @@ export default class Team {
     public icon?: string,
     public hall?: string,
     public tile?: string,
-    public npcsConfig?: NpcConfig[]
+    public npcsConfig?: FarmConfig[]
   ) {
     this.players = new Phaser.GameObjects.Group(scene);
     this.blocks = new Phaser.GameObjects.Group(scene);
     this.homeBlock = Game.Core.map?.getBlock(homeX, homeY);
     this.joinCommand = [...joinCommand, this.name];
-    this.npcsGroup = new NpcGroup(this.scene, this, this.npcsConfig);
+    this.farms = new Farms(this.scene, this, this.npcsConfig);
     if (this.shortName) {
       this.joinCommand.push(this.shortName);
     }
@@ -44,7 +44,7 @@ export default class Team {
     this.scene.load.image(this.tile, this.tile);
     this.scene.load.once("complete", () => {
       this.initHomeBlock();
-      this.initNpcGroup();
+      this.initFarms();
     });
     this.scene.load.start();
   }
@@ -57,8 +57,8 @@ export default class Team {
     }
   }
 
-  initNpcGroup() {
-    this.npcsGroup.init();
+  initFarms() {
+    this.farms.init();
   }
 
   makeUser(id: number, name: string) {
@@ -100,7 +100,7 @@ export default class Team {
       [...this.users].forEach((user) => {
         user.setTeam(team);
       });
-      this.npcsGroup?.setDie();
+      this.farms?.setDie();
       Game.Core.time?.reset();
     }
   }
