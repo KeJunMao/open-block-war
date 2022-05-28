@@ -119,7 +119,7 @@ export default class Player extends Phaser.GameObjects.Container {
       this.line = this.scene.add
         .line(0, 0, 0, 0, 100, 100, 0xffffff)
         .setOrigin(0)
-        .setAlpha(0.1)
+        .setAlpha(0.4)
         .setDepth(this.depth + 1);
     }
   }
