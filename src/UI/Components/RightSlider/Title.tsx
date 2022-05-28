@@ -22,7 +22,7 @@ export default function Title() {
         variant="h4"
         align="center"
       >
-        英雄榜
+        积分榜
       </Typography>
       <Typography
         sx={{

@@ -67,14 +67,14 @@ export default class Danmu {
     //   }
     //   return;
     // }
-    if (rand <= 1) {
+    if (rand <= 5) {
       user?.player.makeChild(1);
       Game.Core?.toast?.showMessage(`${user.name} 获取了兵力+1`);
-    } else if (rand <= 2) {
-      user?.player.speedUp(0.1);
+    } else if (rand <= 10) {
+      user?.player.speedUp(0.2);
       Game.Core?.toast?.showMessage(`${user.name} 获取了速度小幅提升`);
     } else {
-      user?.player.speedUp(0.0001);
+      user?.player.speedUp(0.1);
       Game.Core?.toast?.showMessage(`${user.name} 获取了速度微微提升了`);
     }
   }
