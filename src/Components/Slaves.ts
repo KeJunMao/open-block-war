@@ -58,6 +58,7 @@ export default class Slaves extends Phaser.GameObjects.Group {
       });
       this.scene.load.start();
       npc.tp();
+      npc.setColorByLevel(slave.level);
       this.npcs.set(slaveId, npc);
     }
   }

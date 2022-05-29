@@ -145,7 +145,7 @@ export default class Player extends Phaser.GameObjects.Container {
 
   setFace(faceKey: string) {
     this.face.setTexture(faceKey);
-    this.face.setDisplaySize(Game.BlockSize * 1.5, Game.BlockSize * 1.5);
+    this.face.setDisplaySize(Game.BlockSize * 1.2, Game.BlockSize * 1.2);
     this.Body.setCircle(Game.BlockSize / 2);
     this.children.forEach((v) => v.setFace(faceKey));
   }
