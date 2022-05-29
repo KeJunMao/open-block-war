@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import GameTime from "../Components/GameTime";
 import paid from "../paid";
 
 export interface FarmConfig {
@@ -61,6 +62,7 @@ export interface ConfigState {
   styleTheme: any;
   gifts: GiftConfig;
   cards?: CardConfig[];
+  endTime: number;
 }
 
 const initialState: ConfigState = {
@@ -70,6 +72,7 @@ const initialState: ConfigState = {
   theme: "default",
   styleTheme: {},
   gifts: {},
+  endTime: 900,
 };
 
 export const configSlice = createSlice({
@@ -93,6 +96,9 @@ export const configSlice = createSlice({
       for (let key in themeConfig) {
         // @ts-ignore
         state[key] = themeConfig[key];
+      }
+      if (themeConfig.endTime) {
+        GameTime.EndTime = themeConfig.endTime;
       }
     },
   },
