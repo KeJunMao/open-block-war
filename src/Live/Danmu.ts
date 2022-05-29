@@ -16,7 +16,9 @@ export default class Danmu {
         Danmu.ApplyTp(danmu, user);
         Danmu.ApplyObedience(danmu, user);
         Danmu.ApplyDraw(danmu, user);
-        Danmu.ApplyPowerUp(user);
+        if (danmu.faceId || danmu.text.length >= 4) {
+          Danmu.ApplyPowerUp(user);
+        }
       } catch (error) {}
     } else {
       const team = Game.Core.teams.find((team) =>

@@ -68,7 +68,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "步兵",
       level: levelN,
-      speed: 50,
+      speed: 100,
       scale: 0.8,
       face: "/theme/war3/npcs/footman.png",
       team: "人族",
@@ -78,7 +78,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "火枪手",
       level: levelN,
-      speed: 50,
+      speed: 60,
       scale: 0.8,
       face: "/theme/war3/npcs/rifleman.png",
       team: "人族",
@@ -118,7 +118,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "飞机",
       level: levelR,
-      speed: 150,
+      speed: 300,
       scale: 1,
       face: "/theme/war3/npcs/flyingMachine.png",
       team: "人族",
@@ -138,7 +138,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "龙鹰骑士",
       level: levelR,
-      speed: 150,
+      speed: 300,
       scale: 1,
       face: "/theme/war3/npcs/dragonHawk.png",
       team: "人族",
@@ -148,7 +148,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "骑士",
       level: levelSR,
-      speed: 400,
+      speed: 450,
       scale: 1.4,
       face: "/theme/war3/npcs/knight.png",
       team: "人族",
@@ -158,8 +158,8 @@ const war3: Partial<ConfigState> = {
     {
       name: "攻城坦克",
       level: levelSR,
-      speed: 400,
-      scale: 1.4,
+      speed: 350,
+      scale: 1.5,
       face: "/theme/war3/npcs/seigeEngine.png",
       team: "人族",
       onlyTeam: true,
@@ -168,7 +168,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "狮鹫骑士",
       level: levelSR,
-      speed: 400,
+      speed: 500,
       scale: 1.4,
       face: "/theme/war3/npcs/gryphonRider.png",
       team: "人族",
@@ -218,7 +218,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "大G",
       level: levelN,
-      speed: 50,
+      speed: 70,
       scale: 0.8,
       face: "/theme/war3/npcs/grunt.png",
       team: "兽族",
@@ -238,7 +238,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "巨魔猎头",
       level: levelN,
-      speed: 50,
+      speed: 90,
       scale: 0.8,
       face: "/theme/war3/npcs/headhunter.png",
       team: "兽族",
@@ -248,7 +248,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "掠夺者",
       level: levelR,
-      speed: 150,
+      speed: 300,
       scale: 1,
       face: "/theme/war3/npcs/raider.png",
       team: "兽族",
@@ -268,7 +268,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "萨满",
       level: levelR,
-      speed: 150,
+      speed: 200,
       scale: 1,
       face: "/theme/war3/npcs/shaman.png",
       team: "兽族",
@@ -278,7 +278,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "巫医",
       level: levelR,
-      speed: 150,
+      speed: 200,
       scale: 1,
       face: "/theme/war3/npcs/witchDoctor.png",
       team: "兽族",
@@ -288,7 +288,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "风骑士",
       level: levelR,
-      speed: 150,
+      speed: 300,
       scale: 1,
       face: "/theme/war3/npcs/wyvernRider.png",
       team: "兽族",
@@ -308,7 +308,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "巨魔蝙蝠骑士",
       level: levelR,
-      speed: 150,
+      speed: 250,
       scale: 1,
       face: "/theme/war3/npcs/trollBatRider.png",
       team: "兽族",
@@ -328,7 +328,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "牛头人",
       level: levelSR,
-      speed: 400,
+      speed: 550,
       scale: 1.4,
       face: "/theme/war3/npcs/tauren.png",
       team: "兽族",
@@ -388,7 +388,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "食尸鬼",
       level: levelN,
-      speed: 50,
+      speed: 110,
       scale: 0.8,
       face: "/theme/war3/npcs/ghoul.png",
       team: "不死",
@@ -398,7 +398,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "地穴恶魔",
       level: levelN,
-      speed: 50,
+      speed: 70,
       scale: 0.8,
       face: "/theme/war3/npcs/cryptFiend.png",
       team: "不死",
@@ -408,7 +408,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "石像鬼",
       level: levelR,
-      speed: 150,
+      speed: 200,
       scale: 1,
       face: "/theme/war3/npcs/gargoyle.png",
       team: "不死",
@@ -458,7 +458,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "冰霜巨龙",
       level: levelSR,
-      speed: 400,
+      speed: 600,
       scale: 1.4,
       face: "/theme/war3/npcs/frostWyrm.png",
       team: "不死",
@@ -478,7 +478,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "憎恶",
       level: levelSR,
-      speed: 400,
+      speed: 500,
       scale: 1.4,
       face: "/theme/war3/npcs/abomination.png",
       team: "不死",
@@ -538,7 +538,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "弓箭手",
       level: levelN,
-      speed: 50,
+      speed: 70,
       scale: 0.8,
       face: "/theme/war3/npcs/archer.png",
       team: "暗夜",
@@ -548,7 +548,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "女猎手",
       level: levelN,
-      speed: 50,
+      speed: 100,
       scale: 0.8,
       face: "/theme/war3/npcs/huntress.png",
       team: "暗夜",
@@ -568,7 +568,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "熊德",
       level: levelR,
-      speed: 150,
+      speed: 200,
       scale: 1,
       face: "/theme/war3/npcs/druidOfTheClaw.png",
       team: "暗夜",
@@ -578,7 +578,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "角鹰兽",
       level: levelR,
-      speed: 150,
+      speed: 250,
       scale: 1,
       face: "/theme/war3/npcs/hippogriff.png",
       team: "暗夜",
@@ -588,7 +588,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "鸟德",
       level: levelR,
-      speed: 150,
+      speed: 200,
       scale: 1,
       face: "/theme/war3/npcs/druidOfTheTalon.png",
       team: "暗夜",
@@ -598,7 +598,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "精灵龙",
       level: levelR,
-      speed: 150,
+      speed: 200,
       scale: 1,
       face: "/theme/war3/npcs/faerieDragon.png",
       team: "暗夜",
@@ -608,7 +608,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "小鹿",
       level: levelR,
-      speed: 150,
+      speed: 300,
       scale: 1,
       face: "/theme/war3/npcs/dryad.png",
       team: "暗夜",
@@ -628,7 +628,7 @@ const war3: Partial<ConfigState> = {
     {
       name: "奇美拉",
       level: levelSR,
-      speed: 400,
+      speed: 600,
       scale: 1.4,
       face: "/theme/war3/npcs/chimaera.png",
       team: "暗夜",

@@ -24,7 +24,7 @@ export default class CardController {
     if (!randomLevel) return;
     if (!isGold) {
       // 减少积分
-      const needScore = Math.min(50 + user.slaveGroup.Count * 50, 300);
+      const needScore = Math.min(user.slaveGroup.Count * 30, 300);
       if (user.score < needScore) {
         this.toast?.showMessage(
           `${user.name}还需要${needScore - user.score}积分才能发兵`
