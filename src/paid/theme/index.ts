@@ -1,5 +1,6 @@
 import { ConfigState } from "../../store/configSlice";
 import war3 from "./war3";
+import war3_25048892 from "./war3.25048892";
 
 const themes: {
   [key: string]: Partial<ConfigState>;
@@ -291,6 +292,7 @@ const themes: {
     ],
     gameName: "七国争霸",
   },
+  war3_25048892,
 };
 
 export function getThemeConfig(theme: string) {
