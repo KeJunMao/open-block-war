@@ -3,6 +3,7 @@ import war3 from "./war3";
 
 const war3_25048892: Partial<ConfigState> = {
   ...war3,
+  endTime: 600,
   gifts: {
     打call: {
       min: 1,
