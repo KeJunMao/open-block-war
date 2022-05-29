@@ -1,3 +1,4 @@
+import CardController from "../Card/Controller";
 import Block from "../Components/Block";
 import GameTime from "../Components/GameTime";
 import Map from "../Components/Map";
@@ -9,7 +10,6 @@ import { store } from "../store";
 import { ConfigState } from "../store/configSlice";
 import { setTeams, updateTeams, setWinTeam } from "../store/rootSlice";
 import { setTodayMvpUsers } from "../store/topSlice";
-import CardController from "./CardController";
 
 export default class Core {
   map: Map | undefined;

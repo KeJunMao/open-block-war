@@ -12,11 +12,15 @@ export interface FarmConfig {
   loop?: boolean;
 }
 
-export interface CardConfig {
+export interface LevelType {
+  level: string;
   rate: number;
   goldRate: number;
+}
+
+export interface CardConfig {
   name: string;
-  level: string;
+  level: LevelType;
   speed: number;
   scale: number;
   face: string;
