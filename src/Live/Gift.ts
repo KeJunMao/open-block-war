@@ -76,7 +76,7 @@ export default class Gift {
 
   static ApplyNiu(user: User, num: number) {
     user?.player.sizeUp(num);
-    Game.Core.toast?.showMessage(`${user?.name} 投喂牛哇牛哇*${num}体积提升`);
+    Game.Core.toast?.showMessage(`${user?.name} 投喂这个好诶*${num}体积提升`);
   }
 
   static ApplyIleIle(user: User, num: number) {
