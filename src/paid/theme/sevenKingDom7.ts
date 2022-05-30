@@ -23,7 +23,7 @@ const sevenKingDom7: Partial<ConfigState> = {
       homeY: 21,
       name: "燕国",
       shortName: "燕",
-      color: 0xffff00,
+      color: 0x90caf9,
       joinCommand: [],
     },
     {
