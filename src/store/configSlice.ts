@@ -127,6 +127,9 @@ export const configSlice = createSlice({
           // @ts-ignore
           state[key] = config[key];
         }
+        if (config.endTime) {
+          GameTime.EndTime = config.endTime;
+        }
       }
     },
   },

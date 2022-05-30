@@ -60,6 +60,13 @@ const sevenKingDom7: Partial<ConfigState> = {
     },
   ],
   gameName: "七国争霸",
+  gifts: {
+    打call: {
+      min: 1,
+      max: 3,
+    },
+  },
+  endTime: 600,
 };
 
 export default sevenKingDom7;

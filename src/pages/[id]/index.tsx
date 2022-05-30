@@ -3,7 +3,7 @@ import App from "../../UI/App";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import Box from "@mui/material/Box";
-import { setLiveId, setTheme } from "../../store/configSlice";
+import { applyLocalConfig, setLiveId, setTheme } from "../../store/configSlice";
 import { colorToString } from "../../paid/theme";
 
 export default function () {
@@ -13,6 +13,7 @@ export default function () {
   const theme = searchParams.get("theme");
   dispatch(setLiveId(parseInt(id as string)));
   dispatch(setTheme(theme));
+  dispatch(applyLocalConfig());
 
   const { liveId } = useSelector((state: RootState) => state.config);
   const { styleTheme } = useSelector((state: RootState) => state.config);

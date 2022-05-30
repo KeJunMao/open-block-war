@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import Config from "./Components/Config";
 import GameCard from "./Components/GameCard";
 import LeftSlider from "./Components/LeftSlider";
 import { Result } from "./Components/Result";
@@ -9,6 +10,7 @@ export default function App() {
   return (
     <>
       <Result></Result>
+      <Config></Config>
       <Box
         sx={{
           boxSizing: "border-box",

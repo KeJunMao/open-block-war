@@ -1,7 +1,5 @@
 import { ConfigState } from "../../store/configSlice";
 import sevenKingDom7 from "./sevenKingDom7";
-import sevenKingDom7_25063224 from "./sevenKingDom7.25063224";
-import sevenKingDom7_25070063 from "./sevenKingDom7.25070063";
 import war3 from "./war3";
 import war3_25048892 from "./war3.25048892";
 
@@ -235,8 +233,6 @@ const themes: {
   },
   war3,
   sevenKingDom7,
-  sevenKingDom7_25070063,
-  sevenKingDom7_25063224,
   war3_25048892,
 };
 
