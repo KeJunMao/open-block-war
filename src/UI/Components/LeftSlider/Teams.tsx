@@ -158,6 +158,10 @@ export default function Teams() {
       {[...teams]
         .sort((a, b) => b.blocks.children.size - a.blocks.children.size)
         .map((team, index) => {
+          let playerCount = team.players.children.size;
+          team.users.forEach((user) => {
+            playerCount += user.slaveGroup.children.size;
+          });
           return (
             <Team
               key={team.name}
@@ -168,7 +172,7 @@ export default function Teams() {
               icon={team.icon}
               blockCount={team.blocks.children.size}
               userCount={team.users.size}
-              playerCount={team.players.children.size}
+              playerCount={playerCount}
               tile={team.tile}
               index={index}
               isDie={team.isDie}

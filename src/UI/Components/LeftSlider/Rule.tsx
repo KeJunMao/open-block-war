@@ -60,10 +60,15 @@ const DanmuCard = ({ name, text }: { text: string; name: string }) => {
 const PlayRule = () => {
   const teams = useSelector((state: RootState) => state.root.teams);
   const hasCard = useSelector((state: RootState) => state.config.cards);
+  const autoJoin = useSelector((state: RootState) => state.config.autoJoin);
   const cards = [
     {
       name: "阵营名",
       text: "加入战斗",
+    },
+    {
+      name: "投靠 阵营",
+      text: "改变阵营",
     },
     {
       name: "TP 或 B",
@@ -73,10 +78,6 @@ const PlayRule = () => {
       name: "任意弹幕",
       text: "随机强化",
     },
-    {
-      name: "投靠 阵营",
-      text: "改变阵营",
-    },
   ];
   if (hasCard) {
     cards.push({
@@ -84,12 +85,13 @@ const PlayRule = () => {
       text: "消耗积分发兵",
     });
   }
+  if (autoJoin) {
+    cards[0].name = "观看直播";
+    cards[0].text = "自动加入战斗";
+  }
   if (teams.length >= 5 || cards.length >= 5) {
     return (
       <Swiper modules={[Autoplay]} autoplay={{ delay: 1200 }}>
-        <SwiperSlide>
-          <DanmuCard name="阵营名" text="加入战斗"></DanmuCard>
-        </SwiperSlide>
         {cards.map((card) => {
           return (
             <SwiperSlide key={card.name}>
