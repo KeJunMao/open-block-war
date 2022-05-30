@@ -6,10 +6,23 @@ export async function getFaceByBilibili(id: string) {
   const response = await fetch(url, {
     headers: {
       "User-Agent": randomUseragent.getRandom(),
+      referer: "https://www.bilibili.com/",
     },
   });
   const data = await response.json();
   const face = data?.data?.face ?? "";
+  return face;
+}
+export async function getFaceByBilibili2(id: string) {
+  const url = `https://api.bilibili.com/x/space/app/index?mid=${id}`;
+  const response = await fetch(url, {
+    headers: {
+      "User-Agent": randomUseragent.getRandom(),
+      referer: "https://www.bilibili.com/",
+    },
+  });
+  const data = await response.json();
+  const face = data?.data?.info?.face ?? "";
   return face;
 }
 export async function getFaceByTenApi(id: string) {
