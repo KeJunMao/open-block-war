@@ -10,6 +10,11 @@ const war3_25048892: Partial<ConfigState> = {
       max: 3,
     },
   },
+  fansCard: {
+    enable: false,
+    level: 5,
+  },
+  autoJoin: false,
 };
 
 export default war3_25048892;

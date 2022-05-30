@@ -1,8 +1,9 @@
 import { KeepLiveWS } from "bilibili-live-ws/src/browser";
+import { store } from "../store";
 import Danmu from "./Danmu";
-// import Entry from "./Entry";
+import Entry from "./Entry";
 import Gift from "./Gift";
-// import Interact from "./Interact";
+import Interact from "./Interact";
 import {
   IParseDanmuData,
   IParseEntryData,
@@ -109,13 +110,15 @@ export default class BilibiliLive {
       const gift = parseGift(data);
       Gift.Apply(gift);
     });
-    // this.live.on("ENTRY_EFFECT", (data) => {
-    //   const entry = parseEntry(data);
-    //   Entry.Apply(entry);
-    // });
-    // this.live.on("INTERACT_WORD", (data) => {
-    //   const interact = parseInteract(data);
-    //   Interact.Apply(interact);
-    // });
+    if (store.getState().config.autoJoin) {
+      this.live.on("ENTRY_EFFECT", (data) => {
+        const entry = parseEntry(data);
+        Entry.Apply(entry);
+      });
+      this.live.on("INTERACT_WORD", (data) => {
+        const interact = parseInteract(data);
+        Interact.Apply(interact);
+      });
+    }
   }
 }

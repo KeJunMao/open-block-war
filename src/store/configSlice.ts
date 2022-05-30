@@ -69,6 +69,7 @@ export interface ConfigState {
     // 最低等级;
     level: number;
   };
+  autoJoin: boolean;
 }
 
 const initialState: ConfigState = {
@@ -83,6 +84,7 @@ const initialState: ConfigState = {
     enable: false,
     level: 0,
   },
+  autoJoin: false,
 };
 
 export const configSlice = createSlice({
