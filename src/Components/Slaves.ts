@@ -39,7 +39,8 @@ export default class Slaves extends Phaser.GameObjects.Group {
   makeSlave(slave: Slave) {
     const slaveId = `${slave.name}-${slave.level}`;
     if (this.npcs.has(slaveId)) {
-      this.npcs.get(slaveId)?.makeChild();
+      const npc = this.npcs.get(slaveId);
+      npc?.makeChild();
     } else {
       const npc = new Npc(
         this.scene,

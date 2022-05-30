@@ -25,9 +25,20 @@ export function parseDanmu(data: IDanmuData) {
   const { info } = data;
   const text: string = info[1];
   const user = info[2];
+  const card = info[3];
   const id: number = user[0];
   const name: string = user[1];
-  const result: IParseDanmuData = { text, id, name };
+  const cardLevel: number = card[0] ?? 0;
+  const cardLiveId: number = card[3] ?? 0;
+  const result: IParseDanmuData = {
+    text,
+    id,
+    name,
+    card: {
+      level: cardLevel,
+      liveId: cardLiveId,
+    },
+  };
   try {
     const faceId: string = info[0][13].emoticon_unique;
     result["faceId"] = faceId;

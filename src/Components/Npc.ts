@@ -62,6 +62,7 @@ export default class Npc extends Player {
     this.setVisible(false);
     this.line?.setActive(false);
     this.line?.setVisible(false);
+    this.group.remove(this);
     this.children.forEach((v) => v.setDie());
   }
 

@@ -63,6 +63,12 @@ export interface ConfigState {
   gifts: GiftConfig;
   cards?: CardConfig[];
   endTime: number;
+  // 粉丝牌概率加成
+  fansCard: {
+    enable: boolean;
+    // 最低等级;
+    level: number;
+  };
 }
 
 const initialState: ConfigState = {
@@ -73,6 +79,10 @@ const initialState: ConfigState = {
   styleTheme: {},
   gifts: {},
   endTime: 900,
+  fansCard: {
+    enable: false,
+    level: 0,
+  },
 };
 
 export const configSlice = createSlice({
@@ -101,9 +111,25 @@ export const configSlice = createSlice({
         GameTime.EndTime = themeConfig.endTime;
       }
     },
+    applyLocalConfig(state) {
+      let localConfig = localStorage.getItem(`${state.liveId}_${state.theme}`);
+      if (!localConfig) {
+        return;
+      }
+      const config: Partial<ConfigState> = JSON.parse(localConfig);
+      if (config) {
+        delete config.theme;
+        delete config.liveId;
+
+        for (let key in config) {
+          // @ts-ignore
+          state[key] = config[key];
+        }
+      }
+    },
   },
 });
 
-export const { setLiveId, setTheme } = configSlice.actions;
+export const { setLiveId, setTheme, applyLocalConfig } = configSlice.actions;
 
 export default configSlice.reducer;

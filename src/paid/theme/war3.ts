@@ -676,6 +676,10 @@ const war3: Partial<ConfigState> = {
       goldIgnoreTeam: true,
     },
   ],
+  fansCard: {
+    enable: true,
+    level: 5,
+  },
 };
 
 export default war3;
