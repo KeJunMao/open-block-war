@@ -19,26 +19,46 @@ export default class GoldKey {
       text: "红",
       id: 233,
       name: "红色",
+      card: {
+        level: 1,
+        liveId: 233,
+      },
     });
     Danmu.Apply({
       text: "蓝",
       id: 2333,
       name: "蓝色",
+      card: {
+        level: 1,
+        liveId: 233,
+      },
     });
     Danmu.Apply({
       text: "黄",
       id: 23333,
       name: "黄色",
+      card: {
+        level: 1,
+        liveId: 233,
+      },
     });
     Danmu.Apply({
       text: "绿",
       id: 233333,
       name: "绿色",
+      card: {
+        level: 1,
+        liveId: 233,
+      },
     });
     Danmu.Apply({
       text: "紫",
       id: 2333333,
       name: "紫色",
+      card: {
+        level: 1,
+        liveId: 233,
+      },
     });
   }
 }
