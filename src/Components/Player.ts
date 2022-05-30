@@ -71,7 +71,7 @@ export default class Player extends Phaser.GameObjects.Container {
 
   sizeUp(count = 1) {
     this.sizeCoefficient += count;
-    let size = 0.4 * Math.log(this.sizeCoefficient + 1) + 1;
+    let size = 0.3 * Math.log(this.sizeCoefficient + 1) + 1;
     this.setBodySize(size);
   }
 
@@ -128,7 +128,7 @@ export default class Player extends Phaser.GameObjects.Container {
     if (this.parent) {
       this.flash.loop = this.parent.flash.loop;
     } else {
-      this.flash.loop = this.flash.loopCounter + count * 2;
+      this.flash.loop = Math.min(this.flash.loopCounter + count, 5);
     }
     if (this.flash.loop < 0) {
       this.flash.loop = 0;

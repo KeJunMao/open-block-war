@@ -7,6 +7,7 @@ export default class MainScene extends Phaser.Scene {
   }
 
   create() {
+    this.physics.world.setFPS(30);
     Game.Core.init(this);
   }
 
