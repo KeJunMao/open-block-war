@@ -158,7 +158,7 @@ export default function Rule() {
         text="增派兵力"
       />
       <GiftCard
-        img="https://i0.hdslb.com/bfs/live/419bf4e5bd6fb4e1185fb73a466c6c884d0f2ba2.webp"
+        img="https://s1.hdslb.com/bfs/live/bb6c11dcc365b3d8287569f08b8b0d0f2e1a3ef8.png@80w_80h_1e_1c.webp"
         text="变大"
       />
       {hasCard && (

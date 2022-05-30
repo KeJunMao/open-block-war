@@ -21,7 +21,8 @@ export default class Gift {
       case "小花花":
         Gift.ApplyFlower(user, gift.num);
         break;
-      case "牛哇牛哇":
+      // 30758
+      case "这个好诶":
         Gift.ApplyNiu(user, gift.num);
         break;
       case "i了i了":
