@@ -23,6 +23,9 @@ router.get("/b/face/:id", async function (req, res) {
       }
     }
   }
+  if (!face) {
+    face = "http://i0.hdslb.com/bfs/face/member/noface.jpg";
+  }
   res.send({
     face,
   });

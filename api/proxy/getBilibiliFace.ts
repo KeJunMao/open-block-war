@@ -1,27 +1,18 @@
 import * as randomUseragent from "random-useragent";
 import fetch from "node-fetch";
+import { httpGet } from "./ajax";
 
 export async function getFaceByBilibili(id: string) {
   const url = `https://api.bilibili.com/x/space/acc/info?mid=${id}`;
-  const response = await fetch(url, {
-    headers: {
-      "User-Agent": randomUseragent.getRandom(),
-      referer: "https://www.bilibili.com/",
-    },
-  });
-  const data = await response.json();
+  const res = await httpGet(url);
+  const data = res.data;
   const face = data?.data?.face ?? "";
   return face;
 }
 export async function getFaceByBilibili2(id: string) {
   const url = `https://api.bilibili.com/x/space/app/index?mid=${id}`;
-  const response = await fetch(url, {
-    headers: {
-      "User-Agent": randomUseragent.getRandom(),
-      referer: "https://www.bilibili.com/",
-    },
-  });
-  const data = await response.json();
+  const res = await httpGet(url);
+  const data = res.data;
   const face = data?.data?.info?.face ?? "";
   return face;
 }
