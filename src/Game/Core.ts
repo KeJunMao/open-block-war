@@ -136,6 +136,7 @@ export default class Core {
     if (mvpUser) {
       store.dispatch(setTodayMvpUsers(mvpUser));
     }
+    this.time?.worker.terminate();
     setTimeout(() => {
       store.dispatch(setWinTeam(undefined));
       this.scene.scene.restart(this.scene);
