@@ -106,7 +106,6 @@ export default class Team {
         user.slaveGroup.reset();
       });
       this.farms?.setDie();
-      Game.Core.time?.updateTime();
     }
   }
 

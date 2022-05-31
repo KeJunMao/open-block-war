@@ -1,7 +1,7 @@
-self.onmessage = (_message) => {
-  let time = 0;
-  setInterval(() => {
-    time++;
-    postMessage(time);
-  }, 1000);
-};
+let timer;
+let time = 0;
+clearInterval(timer);
+timer = setInterval(() => {
+  time++;
+  postMessage(time);
+}, 1000);

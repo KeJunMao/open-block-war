@@ -7,35 +7,27 @@ export default class GameTime {
   static EndTime: number = 900;
   worker!: Worker;
   constructor(public scene: Phaser.Scene) {
+    this.update(0);
     this.initWorker();
   }
 
   initWorker() {
-    if (this.worker) {
-      this.worker.terminate();
-    }
     this.worker = new Worker(new URL("./GameTime.worker.js", import.meta.url));
-    this.worker.postMessage({});
     this.worker.onmessage = (message) => {
       const time = message.data;
       this.update(time);
     };
-  }
-
-  reset() {
-    this.initWorker();
-  }
-
-  updateTime() {
-    // this.time -= GameTime.EndTime / 4;
-    // this.time = Math.max(this.time, 0);
+    this.worker.onerror = (_ev) => {
+      this.update(GameTime.EndTime);
+    };
   }
 
   update(time: number) {
     this.time = time;
-    store.dispatch(setTime(this.time));
     if (this.time >= GameTime.EndTime) {
+      this.worker.terminate();
       Game.Core.checkGameOverByTime();
     }
+    store.dispatch(setTime(this.time));
   }
 }

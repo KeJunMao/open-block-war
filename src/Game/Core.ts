@@ -133,7 +133,6 @@ export default class Core {
     this.scene.scene.pause();
     store.dispatch(setWinTeam(team));
     const mvpUser = team.mvpUser;
-    this.time?.worker.terminate();
     if (mvpUser) {
       store.dispatch(setTodayMvpUsers(mvpUser));
     }
