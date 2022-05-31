@@ -1,6 +1,7 @@
 import Game from "../Game/Game";
 import { store } from "../store";
 import { setTime } from "../store/rootSlice";
+import GameTimeWorker from "./GameTime.worker.js?worker&inline";
 
 export default class GameTime {
   public time: number = 0;
@@ -12,7 +13,7 @@ export default class GameTime {
   }
 
   initWorker() {
-    this.worker = new Worker(new URL("./GameTime.worker.js", import.meta.url));
+    this.worker = new GameTimeWorker();
     this.worker.onmessage = (message) => {
       const time = message.data;
       this.update(time);
