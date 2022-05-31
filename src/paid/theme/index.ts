@@ -79,6 +79,46 @@ const themes: {
     ],
     gameName: "五色大战",
   },
+  warOfFiveDynasties: {
+    teams: [
+      {
+        homeX: 17,
+        homeY: 17,
+        name: "唐",
+        color: 0xf44336,
+        joinCommand: ["唐代", "唐朝", "红"],
+      },
+      {
+        homeX: 2,
+        homeY: 2,
+        name: "宋",
+        color: 0x4caf50,
+        joinCommand: ["宋代", "宋朝", "绿"],
+      },
+      {
+        homeX: 2,
+        homeY: 32,
+        name: "元",
+        color: 0xffeb3b,
+        joinCommand: ["元代", "元朝", "黄"],
+      },
+      {
+        homeX: 32,
+        homeY: 32,
+        name: "明",
+        color: 0x9c27b0,
+        joinCommand: ["明代", "明朝", "紫"],
+      },
+      {
+        homeX: 32,
+        homeY: 2,
+        name: "清",
+        color: 0x448aff,
+        joinCommand: ["清代", "清朝", "蓝"],
+      },
+    ],
+    gameName: "五朝之争",
+  },
   threeKingDom: {
     teams: [
       {
