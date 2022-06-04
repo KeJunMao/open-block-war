@@ -13,6 +13,7 @@ import {
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { ConfigState } from "../../../store/configSlice";
+import paid from "../../../paid";
 
 const Config: FC = () => {
   const [open, setOpen] = useState(false);
@@ -52,6 +53,14 @@ const Config: FC = () => {
 
   const resetConfig = () => {
     localStorage.removeItem(`${config.liveId}_${config.theme}`);
+  };
+  const resetAllConfig = () => {
+    const liveConfig = paid.getLiveIdPaidConfig(config.liveId);
+    if (liveConfig) {
+      liveConfig.themes.forEach((theme) => {
+        localStorage.removeItem(`${config.liveId}_${theme}`);
+      });
+    }
   };
 
   const handleClose = () => {
@@ -96,6 +105,9 @@ const Config: FC = () => {
         </Box>
       </DialogContent>
       <DialogActions>
+        <Button color="error" onClick={resetAllConfig}>
+          清除所有配置
+        </Button>
         <Button onClick={resetConfig}>重置</Button>
         <Button onClick={handleClose}>关闭</Button>
       </DialogActions>
