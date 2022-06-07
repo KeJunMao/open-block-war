@@ -40,6 +40,55 @@ const themes: {
     ],
     gameName: "四色大战",
   },
+  fourKingDom: {
+    teams: [
+      {
+        homeX: 2,
+        homeY: 2,
+        name: "群雄",
+        shortName: "群",
+        color: 0xff0303,
+        joinCommand: ["红"],
+      },
+      {
+        homeX: 32,
+        homeY: 2,
+        name: "魏国",
+        shortName: "魏",
+        color: 0x0042ff,
+        joinCommand: ["蓝"],
+      },
+      {
+        homeX: 2,
+        homeY: 32,
+        name: "蜀国",
+        shortName: "蜀",
+        color: 0xfffc01,
+        joinCommand: ["黄"],
+      },
+      {
+        homeX: 32,
+        homeY: 32,
+        name: "吴国",
+        shortName: "吴",
+        color: 0x1ce6b9,
+        joinCommand: ["绿"],
+      },
+    ],
+    gameName: "三国大战",
+    endTime: 600,
+    gifts: {
+      打call: {
+        min: 1,
+        max: 3,
+      },
+    },
+    fansCard: {
+      enable: false,
+      level: 5,
+    },
+    autoJoin: false,
+  },
   fiveColor: {
     teams: [
       {
