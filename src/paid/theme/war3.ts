@@ -680,7 +680,6 @@ const war3: Partial<ConfigState> = {
     enable: true,
     level: 5,
   },
-  autoJoin: true,
 };
 
 export default war3;
