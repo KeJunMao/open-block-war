@@ -1,7 +1,7 @@
 import Danmu from "../Danmu";
 import Gift from "../Gift";
 import { IParseDanmuData, IParseGiftData } from "../type";
-import { LiveWS } from "./douyu-live-ws/browser";
+import { KeepLiveWS } from "./douyu-live-ws/browser";
 
 interface IDanmuData {
   type: string;
@@ -24,6 +24,7 @@ export function parseGift(data: IGiftData) {
   // 打call === 弱鸡
   // 这个好诶 === 666
   // i了i了 === 666
+  // console.log(data);
 
   let name = "礼物";
 
@@ -69,9 +70,12 @@ export function parseDanmu(data: IDanmuData) {
 }
 
 export default class DouyuLive {
-  live: LiveWS;
+  live: KeepLiveWS;
   constructor(public roomId: number) {
-    this.live = new LiveWS(roomId);
+    this.live = new KeepLiveWS(roomId);
+    // this.live.on("message", (data) => {
+    //   console.log(data);
+    // });
     this.live.on("chatmsg", (data) => {
       const danmu = parseDanmu(data);
       Danmu.Apply(danmu);

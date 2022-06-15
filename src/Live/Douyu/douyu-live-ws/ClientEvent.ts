@@ -18,8 +18,8 @@ export default class ClientEvent {
   }
 
   logout() {
-    this.live.send({ type: "logout" });
     clearInterval(this._heartbeatTask);
+    // return this.live.send({ type: "logout" });
   }
 
   login() {

@@ -17,7 +17,7 @@ export default class Danmu {
         Danmu.ApplyTp(danmu, user);
         Danmu.ApplyObedience(danmu, user);
         Danmu.ApplyDraw(danmu, user);
-        if (danmu.faceId || danmu.text.length >= 4) {
+        if (danmu.faceId || danmu.text.length >= 2) {
           Danmu.ApplyPowerUp(danmu, user);
         }
       } catch (error) {}
