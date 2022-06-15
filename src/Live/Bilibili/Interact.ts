@@ -1,5 +1,5 @@
-import Team from "../Components/Team";
-import { IParseInteractData } from "./type";
+import Team from "../../Components/Team";
+import { IParseInteractData } from "../type";
 
 export default class Interact {
   static Apply(interact: IParseInteractData) {

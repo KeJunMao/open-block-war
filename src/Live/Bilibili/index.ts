@@ -1,15 +1,15 @@
 import { KeepLiveWS } from "bilibili-live-ws/src/browser";
-import { store } from "../store";
-import Danmu from "./Danmu";
+import { store } from "../../store";
+import Danmu from "../Danmu";
 import Entry from "./Entry";
-import Gift from "./Gift";
+import Gift from "../Gift";
 import Interact from "./Interact";
 import {
   IParseDanmuData,
   IParseEntryData,
   IParseGiftData,
   IParseInteractData,
-} from "./type";
+} from "../type";
 
 export interface ICmd {
   cmd: string;

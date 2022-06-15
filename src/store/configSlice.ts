@@ -70,6 +70,7 @@ export interface ConfigState {
     level: number;
   };
   autoJoin: boolean;
+  liveType: "bilibili" | "douyu";
 }
 
 const initialState: ConfigState = {
@@ -85,6 +86,7 @@ const initialState: ConfigState = {
     level: 0,
   },
   autoJoin: false,
+  liveType: "bilibili",
 };
 
 export const configSlice = createSlice({
@@ -95,6 +97,7 @@ export const configSlice = createSlice({
       const liveIdConfig = paid.getLiveIdPaidConfig(action.payload);
       if (liveIdConfig) {
         state.liveId = liveIdConfig.id;
+        state.liveType = liveIdConfig.liveType ?? "bilibili";
       }
     },
     setTheme: (state, action) => {

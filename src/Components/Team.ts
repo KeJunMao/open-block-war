@@ -61,14 +61,14 @@ export default class Team {
     this.farms.init();
   }
 
-  makeUser(id: number, name: string) {
+  makeUser(id: number, name: string, face?: string) {
     if (!this.homeBlock) return;
     if (this.isDie) return;
     if (Team.GetUserById(id)) return;
     const { x, y } = this.homeBlock;
     const player = new Player(this.scene, x, y, this);
     player.setTeam(this);
-    const user = new User(id, name, this, player);
+    const user = new User(id, name, this, player, face);
     player.user = user;
     user.setTeam(this);
   }

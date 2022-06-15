@@ -10,22 +10,27 @@ export default class Gift {
     if (!user) return;
     switch (gift.name) {
       case "辣条":
+      case "荧光棒":
         Gift.ApplyLaTiao(user, gift.num);
         break;
       case "小心心":
         Gift.ApplyLaTiao(user, gift.num);
         break;
       case "打call":
+      case "弱鸡":
         Gift.ApplyDaCall(user, gift.num);
         break;
       case "小花花":
+      case "大气":
         Gift.ApplyFlower(user, gift.num);
         break;
       // 30758
       case "这个好诶":
+      case "666":
         Gift.ApplyNiu(user, gift.num);
         break;
       case "i了i了":
+      case "钻石":
         Gift.ApplyIleIle(user, gift.num);
         break;
       default:
@@ -37,6 +42,9 @@ export default class Gift {
     });
   }
   static ApplyGift(user: User, gift: IParseGiftData) {
+    if (gift.coinType === "!gold") {
+      return;
+    }
     if (gift.coinType === "gold") {
       const totalPrice = Math.floor((gift.price * gift.num) / 100);
       const rand = Phaser.Math.Between(0, totalPrice);
@@ -62,8 +70,8 @@ export default class Gift {
   }
   static ApplyDaCall(user: User, num: number) {
     const callConfig = Game.Core.config?.gifts["打call"] ?? {
-      min: 4,
-      max: 7,
+      min: 1,
+      max: 3,
     };
     const rand = num * Phaser.Math.Between(callConfig.min, callConfig.max);
     user?.player.makeChild(rand);

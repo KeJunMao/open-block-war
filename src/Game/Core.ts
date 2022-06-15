@@ -6,6 +6,7 @@ import { MessageToast } from "../Components/MessageToast";
 import Player from "../Components/Player";
 import Team from "../Components/Team";
 import BilibiliLive from "../Live/Bilibili";
+import DouyuLive from "../Live/Douyu";
 import { store } from "../store";
 import { ConfigState } from "../store/configSlice";
 import { setTeams, updateTeams, setWinTeam } from "../store/rootSlice";
@@ -15,7 +16,7 @@ export default class Core {
   map: Map | undefined;
   config: ConfigState | undefined;
   teams: Team[] = [];
-  live: BilibiliLive;
+  live: BilibiliLive | DouyuLive;
   isGameOver = false;
   toast: MessageToast | undefined;
 
@@ -25,7 +26,12 @@ export default class Core {
   cardController: CardController | undefined;
 
   constructor(public game: Phaser.Game, public scene: Phaser.Scene) {
-    this.live = new BilibiliLive(store.getState().config.liveId);
+    const config = store.getState().config;
+    if (config.liveType === "bilibili") {
+      this.live = new BilibiliLive(store.getState().config.liveId);
+    } else {
+      this.live = new DouyuLive(store.getState().config.liveId);
+    }
   }
 
   clearUp() {

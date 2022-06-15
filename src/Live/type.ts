@@ -12,10 +12,11 @@ export interface IParseDanmuData {
   id: number;
   name: string;
   faceId?: string;
-  card: {
+  card?: {
     level: number;
     liveId: number;
   };
+  face?: string;
 }
 
 export interface IParseEntryData {

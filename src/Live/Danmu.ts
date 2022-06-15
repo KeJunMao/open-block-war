@@ -26,7 +26,7 @@ export default class Danmu {
         team.hasJoinKeyword(danmu.text)
       );
       if (team) {
-        team.makeUser(danmu.id, danmu.name);
+        team.makeUser(danmu.id, danmu.name, danmu.face);
         return;
       }
     }
@@ -57,7 +57,7 @@ export default class Danmu {
   static ApplyPowerUp(danmu: IParseDanmuData, user: User) {
     let rand = Phaser.Math.Between(0, 100);
     const { fansCard, liveId } = store.getState().config;
-    if (fansCard.enable) {
+    if (fansCard.enable && danmu.card) {
       if (fansCard.level < danmu.card.level && danmu.card.liveId === liveId) {
         rand = Phaser.Math.Between(
           0,

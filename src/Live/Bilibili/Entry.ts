@@ -1,5 +1,5 @@
-import Team from "../Components/Team";
-import { IParseEntryData } from "./type";
+import Team from "../../Components/Team";
+import { IParseEntryData } from "../type";
 
 export default class Entry {
   static Apply(entry: IParseEntryData) {
