@@ -71,13 +71,13 @@ export default class Player extends Phaser.GameObjects.Container {
 
   sizeUp(count = 1) {
     this.sizeCoefficient += count;
-    let size = 0.3 * Math.log(this.sizeCoefficient + 1) + 1;
+    let size = 0.8 * Math.log(this.sizeCoefficient + 1) + 1;
+    // let size = this.scale + 0.1 * count;
     this.setBodySize(size);
   }
 
   setBodySize(size: number) {
     this.setScale(size);
-    this.Body.setCircle((Game.BlockSize * size) / 2);
     this.children.forEach((v) => v.setBodySize(size));
   }
 
@@ -149,8 +149,9 @@ export default class Player extends Phaser.GameObjects.Container {
     } catch (error) {
       return;
     }
-    this.face.setDisplaySize(Game.BlockSize * 1.2, Game.BlockSize * 1.2);
+    this.face.setDisplaySize(Game.BlockSize, Game.BlockSize);
     this.Body.setCircle(Game.BlockSize / 2);
+    this.setScale(1.2);
     this.children.forEach((v) => v.setFace(faceKey));
   }
 
