@@ -24,7 +24,7 @@ export function parseGift(data: IGiftData) {
   // 打call === 弱鸡
   // 这个好诶 === 666
   // i了i了 === 666
-  // console.log(data);
+  console.log(data);
 
   let name = "礼物";
 

@@ -63,24 +63,24 @@ export default class GoldKey {
   }
   test() {
     this.initUser();
-    this.sendGift({
-      id: 1,
-      name: "打call",
-      num: 100,
-      uid: 233,
-      uname: "",
-      coinType: "",
-      price: 0,
-    });
-    this.sendGift({
-      id: 1,
-      name: "打call",
-      num: 100,
-      uid: 2333,
-      uname: "",
-      coinType: "",
-      price: 0,
-    });
+    // this.sendGift({
+    //   id: 1,
+    //   name: "打call",
+    //   num: 100,
+    //   uid: 233,
+    //   uname: "",
+    //   coinType: "",
+    //   price: 0,
+    // });
+    // this.sendGift({
+    //   id: 1,
+    //   name: "打call",
+    //   num: 100,
+    //   uid: 2333,
+    //   uname: "",
+    //   coinType: "",
+    //   price: 0,
+    // });
     this.sendGift({
       id: 1,
       name: "这个好诶",
