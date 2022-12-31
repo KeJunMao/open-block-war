@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "ci": "yarn global add pnpm && pnpm install && pnpm build",
+    "start": "node build/server.mjs"
   },
   "devDependencies": {
     "@originjs/vite-plugin-commonjs": "^1.0.3",
