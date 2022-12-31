@@ -11,7 +11,7 @@ export default function () {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
   const theme = searchParams.get("theme");
-  const bilibiliCode = searchParams.get('code')
+  const bilibiliCode = searchParams.get('Code') || searchParams.get('code')
   // @ts-ignore
   window.bilibiliCode = bilibiliCode;
   dispatch(setLiveId(parseInt(id as string)));
