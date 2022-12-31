@@ -11,6 +11,9 @@ export default function () {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
   const theme = searchParams.get("theme");
+  const bilibiliCode = searchParams.get('code')
+  // @ts-ignore
+  window.bilibiliCode = bilibiliCode;
   dispatch(setLiveId(parseInt(id as string)));
   dispatch(setTheme(theme));
   dispatch(applyLocalConfig());

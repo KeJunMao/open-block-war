@@ -1,8 +1,10 @@
 import { defineConfig } from "vite";
 import mix from "vite-plugin-mix";
-import react from "@vitejs/plugin-react";
+import React from "@vitejs/plugin-react";
 import Pages from "vite-plugin-pages";
 import obfuscator from "rollup-plugin-obfuscator";
+import { viteCommonjs } from '@originjs/vite-plugin-commonjs'
+
 
 export default defineConfig({
   preview: {
@@ -17,7 +19,10 @@ export default defineConfig({
       handler: "./api/main.ts",
     }),
     Pages(),
-    react(),
+    React(),
+    viteCommonjs({
+      include: ['danmaku-websocket.min.js']
+    }),
   ],
   build: {
     rollupOptions: {

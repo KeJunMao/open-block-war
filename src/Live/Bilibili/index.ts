@@ -10,6 +10,8 @@ import {
   IParseGiftData,
   IParseInteractData,
 } from "../type";
+import axios from "axios";
+import { createSocket } from "./socket";
 
 export interface ICmd {
   cmd: string;
@@ -17,10 +19,10 @@ export interface ICmd {
   data: any;
 }
 
-export interface IDanmuData extends ICmd {}
-export interface IGiftData extends ICmd {}
-export interface IEntryData extends ICmd {}
-export interface IInteractData extends ICmd {}
+export interface IDanmuData extends ICmd { }
+export interface IGiftData extends ICmd { }
+export interface IEntryData extends ICmd { }
+export interface IInteractData extends ICmd { }
 
 export function parseDanmu(data: IDanmuData) {
   const { info } = data;
@@ -43,7 +45,7 @@ export function parseDanmu(data: IDanmuData) {
   try {
     const faceId: string = info[0][13].emoticon_unique;
     result["faceId"] = faceId;
-  } catch (error) {}
+  } catch (error) { }
   return result;
 }
 
@@ -96,8 +98,13 @@ export function parseInteract(_data: IInteractData) {
 }
 
 export default class BilibiliLive {
-  live: KeepLiveWS;
-  constructor(public roomId: number) {
+  live!: KeepLiveWS;
+  heartBeatTimer: any;
+  constructor(public roomId: number, code = window.bilibiliCode) {
+    if (code) {
+      this.useCode(code)
+      return
+    }
     this.live = new KeepLiveWS(roomId);
     this.live.on("live", () => {
       this?.live?.on("heartbeat", console.log);
@@ -119,6 +126,52 @@ export default class BilibiliLive {
         const interact = parseInteract(data);
         Interact.Apply(interact);
       });
+    }
+  }
+
+  async useCode(code: string) {
+    clearInterval(this.heartBeatTimer)
+    try {
+      const { data } = await axios.post('/api/b/gameStart', {
+        code,
+        app_id: Number('1675588312996')
+      })
+      if (data.code === 0) {
+        const auth_body = data.data.websocket_info.auth_body
+        const wss_link = data.data.websocket_info.wss_link
+        createSocket(auth_body, wss_link, {
+          onReceivedMessage: (res: any) => {
+            const data = res.data;
+            switch (res.cmd) {
+              case "LIVE_OPEN_PLATFORM_DM":
+                Danmu.Apply({
+                  id: data.uid,
+                  face: data.uface,
+                  name: data.uname,
+                  text: data.msg,
+                });
+                break
+              case "LIVE_OPEN_PLATFORM_SEND_GIFT":
+                Gift.Apply({
+                  coinType: data.paid ? 'gold' : '!gold',
+                  id: data.gift_id,
+                  name: data.gift_name,
+                  num: data.gift_num,
+                  price: data.price,
+                  uid: data.uid,
+                  uname: data.uname
+                });
+            }
+          },
+        })
+        this.heartBeatTimer = setInterval(() => {
+          axios.post('/api/b/gameHeartBeat', {
+            game_id: data.data.game_info.game_id
+          })
+        }, 20000)
+      }
+    } catch (error) {
+      console.log(error)
     }
   }
 }

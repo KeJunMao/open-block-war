@@ -12,6 +12,9 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 const persistor = persistStore(store);
 
+import { Buffer } from 'buffer'
+globalThis.Buffer = Buffer
+
 const App = () => {
   return <Suspense fallback={<p>Loading...</p>}>{useRoutes(routes)}</Suspense>;
 };
