@@ -1,7 +1,6 @@
 import { ConfigState } from "../../store/configSlice";
 import sevenKingDom7 from "./sevenKingDom7";
 import war3 from "./war3";
-import war3_25048892 from "./war3.25048892";
 import worldWar2 from "./worldWar2";
 
 const themes: {
@@ -323,7 +322,6 @@ const themes: {
   },
   war3,
   sevenKingDom7,
-  war3_25048892,
   worldWar2,
 };
 
