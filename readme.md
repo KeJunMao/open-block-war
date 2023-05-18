@@ -1,5 +1,19 @@
 # 弹弹乐
 
+曾风靡一时的弹幕互动游戏，内置的皮肤有：
+
+- "default" 四色大战
+- "fiveColor", 五色大战
+- "threeKingDom", 三国大战
+- "jiangHu", 江湖传说
+- "redAlert", 红色警戒
+- "minecraft", 我的世界 带贴图
+- "war3", 魔兽争霸 带贴图、兵种
+- "sevenKingDom7", 七国争霸
+- "warOfFiveDynasties", 五朝之争
+
+以上都可以按空格自定义颜色、名称等
+
 ## 快速开始
 
 ```bash
