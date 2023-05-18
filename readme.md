@@ -23,14 +23,22 @@ pnpm dev
 
 ## 注意事项
 
+这个项目不再积极维护，已有 bug 也不会修复。
+
 ### 权限管理
 
 编辑 `src\paid\index.ts` 新增直播间授权
 
-### Bilibili 官方接口
+### 直播接口
 
-为 `window.bilibiliCode` 赋值即可开启官方接口
+为 `window.bilibiliCode` 赋值即可开启 Bilibili 官方接口
+
+提供了斗鱼和 B 站的两套接口，具体实现可查看 `src\Live`
 
 ### 代理
 
 如果使用的野生 ws 接口的话，修改 `api\proxy\ajax.ts` 的相关配置即可设置获取头像的代理，不然如果人太多就会被 啊 B 暂时 ban 掉
+
+### 金手指
+
+具体可查看 `src\Game\GoldKey.ts`
