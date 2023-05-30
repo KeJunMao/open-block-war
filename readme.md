@@ -21,7 +21,7 @@
 
 ## 快速开始
 
-请先安装 node16+
+请先安装 node18+
 
 ```bash
 # 没有 pnpm 的话可以 npm install -g pnpm
@@ -52,20 +52,36 @@ pnpm dev
 
 例如，访问我的直播间的魔兽争霸主题: `http://localhost:5173/1439885?theme=war3`
 
-
 ## 礼物配置
 
 具体可查看 [src/Live/Gift.ts](./src/Live/Gift.ts)
 
 ## OBS 配置
 
-不要使用直播姬，很卡，推荐使用 OBS ，新增一个浏览器，把权限都给了，大小配置1920x1080，交互时按空格可自定义
+不要使用直播姬，很卡，推荐使用 OBS ，新增一个浏览器，把权限都给了，大小配置 1920x1080，交互时按空格可自定义
+
 ## 部署
 
+本质就是 node 应用
+
+### 直接部署
+
 ```bash
-pnpm build
-pnpm start
+pnpm build # 打包静态网页和 B 站头像、官方 API
+# ./build 为后端接口
+# ./dist 为游戏本体
+pnpm start # 启动
 ```
+
+浏览器打开 http://localhost:3000/
+
+### 使用 Docker
+
+```bash
+pnpm docker:build # 构建镜像
+docker run -P open-block-war # 创建容器
+```
+浏览器打开 http://localhost:3000/
 
 ## 注意事项
 
