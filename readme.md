@@ -21,6 +21,13 @@ pnpm install
 pnpm dev
 ```
 
+## 部署
+
+```bash
+pnpm build
+pnpm start
+```
+
 ## 注意事项
 
 这个项目不再积极维护，已有 bug 也不会修复。
