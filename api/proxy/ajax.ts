@@ -17,5 +17,8 @@ var proxy: AxiosProxyConfig = {
 };
 
 export const httpGet = (url: string) => {
-  return axios.get(url, { proxy: proxy });
+  return axios.get(url, {
+    // 未配置代理时，不使用代理
+    proxy: proxyHost === "PROXY_HOST" ? undefined : proxy,
+  });
 };
