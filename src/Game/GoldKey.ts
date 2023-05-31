@@ -17,7 +17,7 @@ export default class GoldKey {
   initUser() {
     Danmu.Apply({
       text: "红",
-      id: 233,
+      id: 233330,
       name: "红色",
       card: {
         level: 1,
@@ -26,7 +26,7 @@ export default class GoldKey {
     });
     Danmu.Apply({
       text: "蓝",
-      id: 2333,
+      id: 233331,
       name: "蓝色",
       card: {
         level: 1,
@@ -35,7 +35,7 @@ export default class GoldKey {
     });
     Danmu.Apply({
       text: "黄",
-      id: 23333,
+      id: 233332,
       name: "黄色",
       card: {
         level: 1,
@@ -53,7 +53,7 @@ export default class GoldKey {
     });
     Danmu.Apply({
       text: "紫",
-      id: 2333333,
+      id: 2333334,
       name: "紫色",
       card: {
         level: 1,

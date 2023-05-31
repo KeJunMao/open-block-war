@@ -1,41 +1,26 @@
 import * as randomUseragent from "random-useragent";
 import fetch from "node-fetch";
 import { httpGet } from "./ajax";
-import axios from "axios";
 
 export async function getFaceByBilibili(id: string) {
   const url = `https://api.bilibili.com/x/space/acc/info?mid=${id}`;
-  try {
-    const res = await axios.get(url);
-    const data = res.data;
-    const face = data?.data?.face ?? "";
-    if (face) {
-      return face;
-    }
-    throw new Error("no face");
-  } catch (error) {
-    const res = await httpGet(url);
-    const data = res.data;
-    const face = data?.data?.face ?? "";
+  const res = await httpGet(url);
+  const data = res.data;
+  const face = data?.data?.face ?? "";
+  if (face) {
     return face;
   }
+  throw new Error("no face");
 }
 export async function getFaceByBilibili2(id: string) {
   const url = `https://api.bilibili.com/x/space/app/index?mid=${id}`;
-  try {
-    const res = await axios.get(url);
-    const data = res.data;
-    const face = data?.data?.info?.face ?? "";
-    if (face) {
-      return face;
-    }
-    throw new Error("no face");
-  } catch (error) {
-    const res = await httpGet(url);
-    const data = res.data;
-    const face = data?.data?.info?.face ?? "";
+  const res = await httpGet(url);
+  const data = res.data;
+  const face = data?.data?.info?.face ?? "";
+  if (face) {
     return face;
   }
+  throw new Error("no face");
 }
 export async function getFaceByTenApi(id: string) {
   const url = `https://tenapi.cn/bilibili/?uid=${id}`;
@@ -46,5 +31,8 @@ export async function getFaceByTenApi(id: string) {
   });
   const data = await response.json();
   const face = data?.data?.avatar ?? "";
-  return face;
+  if (face) {
+    return face;
+  }
+  throw new Error("no face");
 }
