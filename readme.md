@@ -89,7 +89,7 @@ docker run -P open-block-war # 创建容器
 
 ### 直播接口
 
-为 `window.bilibiliCode` 赋值即可开启 B 站官方接口
+新增 `?Code=` 参数即可开启 B 站官方接口
 
 提供了斗鱼和 B 站的两套接口，具体实现可查看 [src/Live](./src/Live)
 
